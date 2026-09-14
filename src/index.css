@@ -1,0 +1,1585 @@
+/* =======================================================
+REACT DEVELOPER CHEATSHEET
+Единый CSS-файл проекта
+1. ПЕРЕМЕННЫЕ ПРОЕКТА
+ ======================================================= */
+
+:root {
+    /* ---------- Шрифты ---------- */
+    /* Основной шрифт интерфейса, заголовков и обычного текста */
+    --font-main: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    /* Шрифт для примеров JavaScript/JSX/TSX */
+    --font-code: "JetBrains Mono", "Fira Code", Consolas, monospace;
+
+    /* ---------- Размеры текста ---------- */
+    /* Категории в карточках, названия групп Sidebar, маленькие подписи */
+    --text-small: 12px;
+
+    /* Пункты меню, ссылки, короткие описания карточек */
+    --text-medium: 14px;
+
+    /* Основной размер обычного текста */
+    --text-normal: 16px;
+
+    /* Крупный вспомогательный текст */
+    --text-large: 18px;
+
+    /* Заголовки карточек и небольшие заголовки */
+    --text-title: 18px;
+
+    /* Заголовок крупного раздела */
+    --text-section: 32px;
+
+    /* Заголовок страницы темы */
+    --text-page-title: 40px;
+
+    /* Главный заголовок Home */
+    --text-main-title: 48px;
+
+    /* ---------- Толщина текста ---------- */
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+
+    /* ---------- Межстрочный интервал ---------- */
+    /* Заголовки */
+    --line-heading: 1.15;
+    /* Обычный текст */
+    --line-text: 1.6;
+    /* Код */
+    --line-code: 1.5;
+
+    /* =======================================================
+       ЦВЕТА LIGHT MODE
+       ======================================================= */
+
+    /* Общий фон приложения */
+    --bg-page: #F5F7FA;
+
+    /* Фон Header и карточек */
+    --bg-card: #FFFFFF;
+
+    /* Фон левого и правого Sidebar */
+    --bg-sidebar: #FFFFFF;
+
+    /* Более спокойный фон для поля поиска */
+    --bg-input: #F8FAFC;
+
+    /* Фон элемента при наведении */
+    --bg-hover: #F1F5F9;
+
+    /* Фон активного пункта меню */
+    --bg-active: #EAF3FF;
+
+    /* ---------- Цвет текста ---------- */
+    /* Главный текст: заголовки, названия тем */
+    --text-main: #182B49;
+
+    /* Второстепенный текст: описания и пояснения */
+    --text-secondary: #667085;
+
+    /* Маленькие и менее важные подписи */
+    --text-muted: #98A2B3;
+
+    /* Белый текст на цветном фоне */
+    --text-white: #FFFFFF;
+
+    /* ---------- Границы ---------- */
+    /* Обычная граница карточек, Sidebar и Header */
+    --border: #E1E8F0;
+
+    /* Более заметная граница */
+    --border-strong: #CBD5E1;
+
+    /* ---------- Код ---------- */
+    /* Код всегда остаётся тёмным и в Light Mode, и в Dark Mode */
+    --bg-code: #171D29;
+    /* Основной цвет текста в коде */
+    --text-code: #E7EEF8;
+    /* Граница блока кода */
+    --border-code: #2A3546;
+
+    /* =======================================================
+       ЦВЕТА ТЕМ
+       ======================================================= */
+
+    /* Общий фирменный цвет React и основной акцент интерфейса */
+    --color-react: #08A9F5;
+
+    /* Группа базовых тем */
+    --color-basics: #1979FD;
+    /* Компоненты */
+    --color-components: #1979FD;
+    /* Props */
+    --color-props: #8D65F0;
+    /* State */
+    --color-state: #F5A623;
+    /* Hooks */
+    --color-hooks: #18B6B5;
+    /* React Router */
+    --color-router: #EF4444;
+    /* Performance */
+    --color-performance: #4338CA;
+    /* Продвинутые темы */
+    --color-advanced: #8B5CF6;
+
+    /* ---------- Светлые фоны тем ---------- */
+    /* Эти цвета используются для мягкого фона активных элементов,
+       иконок и предупреждений */
+    --color-react-light: rgba(8, 169, 245, 0.10);
+    --color-basics-light: rgba(25, 121, 253, 0.10);
+    --color-components-light: rgba(25, 121, 253, 0.10);
+    --color-props-light: rgba(141, 101, 240, 0.10);
+    --color-state-light: rgba(245, 166, 35, 0.12);
+    --color-hooks-light: rgba(24, 182, 181, 0.10);
+    --color-router-light: rgba(239, 68, 68, 0.10);
+    --color-performance-light: rgba(67, 56, 202, 0.10);
+    --color-advanced-light: rgba(139, 92, 246, 0.10);
+
+    /* ---------- Служебные цвета ---------- */
+    /* Правильное действие или полезный совет */
+    --color-success: #35C98B;
+    /* Предупреждение и важный момент */
+    --color-warning: #F5A623;
+    /* Ошибка */
+    --color-error: #EF5B5B;
+    /* Информационный блок */
+    --color-info: #1979FD;
+
+    /* =======================================================
+       ОТСТУПЫ
+       ======================================================= */
+    /* Используй эти значения вместо случайных 17px, 23px и т.п. */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-7: 28px;
+    --space-8: 32px;
+    --space-9: 36px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-14: 56px;
+    --space-16: 64px;
+    --space-20: 80px;
+    --space-24: 96px;
+
+    /* =======================================================
+       ГАБАРИТЫ ОСНОВНЫХ ОБЛАСТЕЙ
+       ======================================================= */
+    /* Высота верхнего Header */
+    --header-height: 64px;
+    /* Ширина левого Sidebar */
+    --sidebar-width: 240px;
+    /* Ширина правого Sidebar */
+    --right-sidebar-width: 300px;
+    /* Горизонтальный отступ Main от боковых панелей */
+    --content-gap: 32px;
+    /* Внутренний отступ основного контента */
+    --content-padding: 40px;
+    /* Максимальная ширина текста страницы темы */
+    --topic-text-width: 860px;
+    /* Отступы на маленьком экране */
+    --mobile-padding: 16px;
+
+    /* =======================================================
+       РАДИУСЫ
+       ======================================================= */
+    /* Маленькие элементы: кнопки, пункты меню */
+    --radius-small: 6px;
+    /* Search и небольшие контейнеры */
+    --radius-medium: 8px;
+    /* Карточки и основные блоки */
+    --radius-card: 12px;
+    /* Крупные декоративные блоки */
+    --radius-large: 16px;
+    /* Круглые иконки */
+    --radius-round: 999px;
+
+    /* =======================================================
+       ТЕНИ
+       ======================================================= */
+    /* Очень лёгкая тень обычной карточки */
+    --shadow-card: 0 2px 8px rgba(16, 24, 40, 0.04);
+    /* Тень карточки при наведении */
+    --shadow-card-hover: 0 8px 24px rgba(16, 24, 40, 0.08);
+
+    /* =======================================================
+       АНИМАЦИИ
+       ======================================================= */
+    /* Для кнопок, ссылок и пунктов меню */
+    --transition-fast: 150ms ease;
+    /* Для карточек */
+    --transition-normal: 220ms ease;
+    /* Для переключения темы */
+    --transition-theme: 300ms ease;
+    /* Обводка при фокусе с клавиатуры */
+    --focus-ring: 0 0 0 3px rgba(25, 121, 253, 0.18);
+}
+
+/* =========================================================
+   2. DARK MODE
+   =========================================================
+   Добавь класс "dark" на корневой элемент приложения:
+   <div className={isDark ? "app dark" : "app"}>
+   Структура и классы компонентов при этом не меняются.
+   ========================================================= */
+
+.dark {
+    --bg-page: #0D1420;
+    --bg-card: #131D2B;
+    --bg-sidebar: #101925;
+    --bg-input: #111C2B;
+    --bg-hover: #1B2A40;
+    --bg-active: rgba(8, 169, 245, 0.14);
+
+    --text-main: #F2F6FC;
+    --text-secondary: #A8B6CA;
+    --text-muted: #718199;
+    --text-white: #FFFFFF;
+
+    --border: #253449;
+    --border-strong: #34445C;
+
+    --bg-code: #080E17;
+    --text-code: #E7EEF8;
+    --border-code: #28364A;
+
+    --color-react-light: rgba(8, 169, 245, 0.14);
+    --color-basics-light: rgba(25, 121, 253, 0.14);
+    --color-components-light: rgba(25, 121, 253, 0.14);
+    --color-props-light: rgba(141, 101, 240, 0.14);
+    --color-state-light: rgba(245, 166, 35, 0.14);
+    --color-hooks-light: rgba(24, 182, 181, 0.14);
+    --color-router-light: rgba(239, 68, 68, 0.14);
+    --color-performance-light: rgba(67, 56, 202, 0.14);
+    --color-advanced-light: rgba(139, 92, 246, 0.14);
+
+    --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.18);
+    --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+/* =========================================================
+   3. СБРОС И ОБЩИЕ СТИЛИ
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: var(--font-main);
+    background: var(--bg-page);
+    color: var(--text-main);
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--bg-page);
+    color: var(--text-main);
+    font-size: var(--text-normal);
+    line-height: var(--line-text);
+    transition:
+            background-color var(--transition-theme),
+            color var(--transition-theme);
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}
+
+/* =========================================================
+   4. ОСНОВНОЙ КАРКАС ПРИЛОЖЕНИЯ
+   ========================================================= */
+
+/*
+  .app — корневой контейнер всего приложения.
+  Header находится сверху.
+  Ниже располагается трёхколоночная область:
+  левый Sidebar | Main | правый Sidebar.
+*/
+.app {
+    min-height: 100vh;
+    background: var(--bg-page);
+    color: var(--text-main);
+    transition:
+            background-color var(--transition-theme),
+            color var(--transition-theme);
+}
+
+.app-content {
+    display: grid;
+    grid-template-columns:
+    var(--sidebar-width)
+    minmax(0, 1fr)
+    var(--right-sidebar-width);
+    min-height: calc(100vh - var(--header-height));
+}
+
+/* =========================================================
+   5. HEADER
+   ========================================================= */
+
+/*
+  В актуальном макете Header содержит ТОЛЬКО:
+  - логотип;
+  - название проекта;
+  - переключатель темы.
+  Поиска и ссылки на документацию здесь НЕТ.
+*/
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-6);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-card);
+    transition:
+            background-color var(--transition-theme),
+            border-color var(--transition-theme);
+}
+
+/* Левая часть Header: React-логотип + название */
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-width: 0;
+}
+
+/* Изображение/иконка React */
+.header-logo-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+
+/* Название проекта */
+.header-logo-title {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--text-large);
+    font-weight: var(--font-bold);
+    line-height: 1.2;
+}
+
+/* Правая часть Header */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* =========================================================
+   6. ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ
+   ========================================================= */
+
+/*
+  ThemeToggle находится только в Header.
+  Внутри можно использовать иконки Sun / Moon из
+  Lucide или Ant Design Icons.
+*/
+.theme-toggle {
+    width: 56px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 3px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-round);
+    background: var(--bg-input);
+    color: var(--text-secondary);
+    transition:
+            background-color var(--transition-theme),
+            border-color var(--transition-theme);
+}
+
+.theme-toggle-button {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-round);
+    background: transparent;
+    color: var(--text-secondary);
+    transition:
+            background-color var(--transition-fast),
+            color var(--transition-fast);
+}
+
+.theme-toggle-button.active {
+    background: var(--bg-card);
+    color: var(--text-main);
+}
+
+/* =========================================================
+   7. ЛЕВЫЙ SIDEBAR
+   ========================================================= */
+
+/*
+  Левый Sidebar — постоянная навигация по темам.
+  Он есть:
+  - на Home;
+  - на всех TopicPage.
+
+  На Home активного пункта темы нет.
+  На странице State активен State.
+*/
+.left-sidebar {
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    padding: var(--space-6) var(--space-3);
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+    background: var(--bg-sidebar);
+    transition:
+            background-color var(--transition-theme),
+            border-color var(--transition-theme);
+}
+
+/* Группа тем: Basics / Hooks / Routing / Advanced */
+.sidebar-group {
+    margin-bottom: var(--space-6);
+}
+
+/* Название группы */
+.sidebar-group-title {
+    margin: 0 0 var(--space-2) var(--space-3);
+    color: var(--text-muted);
+    font-size: var(--text-small);
+    font-weight: var(--font-bold);
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+/* Пункт меню */
+.sidebar-item {
+    position: relative;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 0 var(--space-3);
+    border-radius: var(--radius-small);
+    color: var(--text-secondary);
+    font-size: var(--text-medium);
+    font-weight: var(--font-medium);
+    transition:
+            background-color var(--transition-fast),
+            color var(--transition-fast);
+}
+
+/* Иконка пункта меню */
+.sidebar-item-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* Наведение */
+.sidebar-item:hover {
+    background: var(--bg-hover);
+    color: var(--text-main);
+}
+
+/* Активный пункт */
+.sidebar-item.active {
+    color: var(--topic-color, var(--color-react));
+    background: var(--topic-color-light, var(--color-react-light));
+    font-weight: var(--font-semibold);
+}
+
+/* Цветная вертикальная полоска слева */
+.sidebar-item.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: var(--radius-round);
+    background: currentColor;
+}
+
+/* =========================================================
+   8. ЦВЕТА ПУНКТОВ SIDEBAR
+   ========================================================= */
+
+.sidebar-item.topic-basics {
+    --topic-color: var(--color-basics);
+    --topic-color-light: var(--color-basics-light);
+}
+
+.sidebar-item.topic-components {
+    --topic-color: var(--color-components);
+    --topic-color-light: var(--color-components-light);
+}
+
+.sidebar-item.topic-props {
+    --topic-color: var(--color-props);
+    --topic-color-light: var(--color-props-light);
+}
+
+.sidebar-item.topic-state {
+    --topic-color: var(--color-state);
+    --topic-color-light: var(--color-state-light);
+}
+
+.sidebar-item.topic-hooks {
+    --topic-color: var(--color-hooks);
+    --topic-color-light: var(--color-hooks-light);
+}
+
+.sidebar-item.topic-router {
+    --topic-color: var(--color-router);
+    --topic-color-light: var(--color-router-light);
+}
+
+.sidebar-item.topic-performance {
+    --topic-color: var(--color-performance);
+    --topic-color-light: var(--color-performance-light);
+}
+
+.sidebar-item.topic-advanced {
+    --topic-color: var(--color-advanced);
+    --topic-color-light: var(--color-advanced-light);
+}
+
+/* =========================================================
+   9. MAIN
+   ========================================================= */
+
+.main {
+    min-width: 0;
+    min-height: calc(100vh - var(--header-height));
+    padding:
+            var(--space-10)
+            var(--content-padding);
+    background: var(--bg-page);
+    transition: background-color var(--transition-theme);
+}
+
+/*
+  Ограничиваем ширину центрального контента.
+  Это особенно важно на больших мониторах.
+*/
+.main-container {
+    width: min(100%, 1280px);
+    margin: 0 auto;
+}
+
+/* =========================================================
+   10. HOME — ВСТУПИТЕЛЬНЫЙ БЛОК
+   ========================================================= */
+
+/*
+  В брифах часто встречается слово Hero.
+  Здесь используем понятное название .intro.
+
+  Intro содержит:
+  - маленькую надпись;
+  - главный заголовок;
+  - описание;
+  - иллюстрацию React.
+*/
+.intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
+    align-items: center;
+    gap: var(--space-8);
+    padding:
+            var(--space-6)
+            0
+            var(--space-8);
+}
+
+.intro-text {
+    min-width: 0;
+    max-width: 650px;
+}
+
+/* Маленькая надпись над H1 */
+.intro-label {
+    margin: 0 0 var(--space-3);
+    color: var(--color-react);
+    font-size: var(--text-small);
+    font-weight: var(--font-bold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* H1 */
+.title-main {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--text-main-title);
+    font-weight: var(--font-extrabold);
+    line-height: var(--line-heading);
+    letter-spacing: -0.035em;
+}
+
+/* Выделение слова Cheatsheet */
+.title-main-accent {
+    color: var(--color-react);
+}
+
+/* Описание под H1 */
+.intro-description {
+    max-width: 560px;
+    margin: var(--space-5) 0 0;
+    color: var(--text-secondary);
+    font-size: var(--text-normal);
+    line-height: var(--line-text);
+}
+
+/* Контейнер изображения React */
+.intro-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+}
+
+/* Сама иллюстрация */
+.intro-image img {
+    width: min(100%, 520px);
+}
+
+/* =========================================================
+   11. ПОИСК НА HOME
+   ========================================================= */
+
+/*
+  Поиск НЕ находится в Header.
+  На Home он расположен в Main:
+  Intro → Search → Catalog.
+  Это позволяет оставить Header минимальным.
+*/
+.home-search {
+    width: min(100%, 700px);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    height: 44px;
+    margin:
+            0
+            0
+            var(--space-8);
+    padding: 0 var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    background: var(--bg-input);
+    color: var(--text-secondary);
+    transition:
+            border-color var(--transition-fast),
+            box-shadow var(--transition-fast),
+            background-color var(--transition-theme);
+}
+
+.home-search:focus-within {
+    border-color: var(--color-react);
+    box-shadow: var(--focus-ring);
+}
+
+.home-search-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.home-search input {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--text-main);
+}
+
+.home-search input::placeholder {
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   12. КАТАЛОГ НА HOME
+   ========================================================= */
+
+.catalog {
+    padding-bottom: var(--space-12);
+}
+
+.catalog-header {
+    margin-bottom: var(--space-5);
+}
+
+.catalog-title {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--text-section);
+    font-weight: var(--font-bold);
+    line-height: var(--line-heading);
+}
+
+/*
+  На desktop — 4 карточки в ряд.
+  Отдельной страницы "Все темы" нет.
+  Все темы показываются прямо на Home.
+*/
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-4);
+}
+
+/* =========================================================
+   13. ОБЩАЯ КАРТОЧКА
+   ========================================================= */
+
+.card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--bg-card);
+    box-shadow: var(--shadow-card);
+    transition:
+            transform var(--transition-normal),
+            box-shadow var(--transition-normal),
+            border-color var(--transition-normal),
+            background-color var(--transition-theme);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* =========================================================
+   14. КАРТОЧКА ТЕМЫ
+   ========================================================= */
+
+/*
+  Пример:
+  <article className="card topic-card topic-state">
+  card       → общая форма;
+  topic-card → расположение элементов;
+  topic-state → цвет State.
+*/
+.topic-card {
+    position: relative;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-5);
+    overflow: hidden;
+}
+
+/* Цветная полоска сверху */
+.topic-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--topic-color, var(--color-react));
+}
+
+/* Верх карточки: иконка + категория */
+.topic-card-top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+/* Круглая иконка */
+.topic-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-round);
+    background: var(--topic-color-light, var(--color-react-light));
+    color: var(--topic-color, var(--color-react));
+}
+
+/* Размер иконки внутри круга */
+.topic-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Название категории */
+.topic-category {
+    color: var(--topic-color, var(--color-react));
+    font-size: var(--text-small);
+    font-weight: var(--font-bold);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* Название темы */
+.topic-card-title {
+    margin: var(--space-4) 0 var(--space-2);
+    color: var(--text-main);
+    font-size: var(--text-title);
+    font-weight: var(--font-bold);
+    line-height: 1.25;
+}
+
+/* Описание темы */
+.topic-card-description {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: var(--text-medium);
+    line-height: 1.55;
+}
+
+/*
+  Внизу карточки теперь "Подробнее", а не "Смотреть все".
+  Ссылка ведёт сразу на страницу темы:
+  /state
+  /props
+  /use-state
+  и т.д.
+*/
+.topic-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    width: fit-content;
+    margin-top: auto;
+    padding-top: var(--space-4);
+    color: var(--topic-color, var(--color-react));
+    font-size: var(--text-medium);
+    font-weight: var(--font-semibold);
+    transition:
+            gap var(--transition-fast),
+            color var(--transition-fast);
+}
+
+.topic-link:hover {
+    gap: var(--space-3);
+}
+
+.topic-link-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* =========================================================
+   15. ЦВЕТА КАРТОЧЕК ТЕМ
+   ========================================================= */
+
+.topic-card.topic-basics {
+    --topic-color: var(--color-basics);
+    --topic-color-light: var(--color-basics-light);
+}
+
+.topic-card.topic-components {
+    --topic-color: var(--color-components);
+    --topic-color-light: var(--color-components-light);
+}
+
+.topic-card.topic-props {
+    --topic-color: var(--color-props);
+    --topic-color-light: var(--color-props-light);
+}
+
+.topic-card.topic-state {
+    --topic-color: var(--color-state);
+    --topic-color-light: var(--color-state-light);
+}
+
+.topic-card.topic-hooks {
+    --topic-color: var(--color-hooks);
+    --topic-color-light: var(--color-hooks-light);
+}
+
+.topic-card.topic-router {
+    --topic-color: var(--color-router);
+    --topic-color-light: var(--color-router-light);
+}
+
+.topic-card.topic-performance {
+    --topic-color: var(--color-performance);
+    --topic-color-light: var(--color-performance-light);
+}
+
+.topic-card.topic-advanced {
+    --topic-color: var(--color-advanced);
+    --topic-color-light: var(--color-advanced-light);
+}
+
+/* =========================================================
+   16. ПРАВЫЙ SIDEBAR НА HOME
+   ========================================================= */
+
+/*
+  На Home справа находится информационная панель.
+  Она НЕ является каталогом тем.
+
+  Содержит:
+  - небольшую React-иллюстрацию;
+  - короткое описание;
+  - информацию о содержимом шпаргалки;
+  - мотивационную подсказку.
+*/
+.right-sidebar {
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    padding: var(--space-6) var(--space-5);
+    overflow-y: auto;
+    border-left: 1px solid var(--border);
+    background: var(--bg-sidebar);
+    transition:
+            background-color var(--transition-theme),
+            border-color var(--transition-theme);
+}
+
+.right-sidebar-card {
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--bg-card);
+    box-shadow: var(--shadow-card);
+}
+
+/* Иллюстрация React в правом Sidebar */
+.right-sidebar-image {
+    width: 100%;
+    margin-bottom: var(--space-5);
+}
+
+/* Текст "React — это не сложно..." */
+.right-sidebar-intro {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: var(--text-medium);
+    line-height: 1.6;
+}
+
+/* Разделитель */
+.right-sidebar-divider {
+    height: 1px;
+    margin: var(--space-5) 0;
+    background: var(--border);
+}
+
+/* Заголовок списка */
+.right-sidebar-title {
+    margin: 0 0 var(--space-3);
+    color: var(--text-main);
+    font-size: var(--text-medium);
+    font-weight: var(--font-semibold);
+}
+
+/* Пункт списка */
+.right-sidebar-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.right-sidebar-list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--text-secondary);
+    font-size: var(--text-medium);
+}
+
+.right-sidebar-list-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--color-react);
+}
+
+/* Небольшая подсказка внизу */
+.tip {
+    margin-top: var(--space-6);
+    padding: var(--space-4);
+    border: 1px solid var(--color-state);
+    border-radius: var(--radius-medium);
+    background: var(--color-state-light);
+}
+
+.tip-title {
+    margin: 0 0 var(--space-2);
+    color: var(--text-main);
+    font-size: var(--text-medium);
+    font-weight: var(--font-semibold);
+}
+
+.tip-text {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: var(--text-small);
+    line-height: 1.55;
+}
+
+/* =========================================================
+   17. TOPIC PAGE
+   ========================================================= */
+
+/*
+  Все отдельные темы используют один компонент TopicPage.
+  Например:
+  /state
+  /props
+  /use-effect
+  /react-router
+
+  Меняются данные и цвет, а структура остаётся одинаковой.
+*/
+.topic-page {
+    width: min(100%, var(--topic-text-width));
+}
+
+/* Шапка страницы темы */
+.topic-header {
+    margin-bottom: var(--space-8);
+}
+
+/* Ссылка назад */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+    color: var(--text-secondary);
+    font-size: var(--text-small);
+    font-weight: var(--font-semibold);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+}
+
+.back-link:hover {
+    color: var(--text-main);
+}
+
+/* Иконка + заголовок */
+.topic-title-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+}
+
+/* Большая иконка страницы */
+.topic-title-icon {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-card);
+    background: var(--topic-color-light, var(--color-react-light));
+    color: var(--topic-color, var(--color-react));
+}
+
+/* H1 страницы темы */
+.title-page {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--text-page-title);
+    font-weight: var(--font-bold);
+    line-height: var(--line-heading);
+    letter-spacing: -0.025em;
+}
+
+/* Короткое название/описание под заголовком */
+.topic-subtitle {
+    margin: var(--space-2) 0 0;
+    color: var(--text-secondary);
+    font-size: var(--text-normal);
+}
+
+/* =========================================================
+   18. ЦВЕТ СТРАНИЦЫ ТЕМЫ
+   ========================================================= */
+
+/*
+  Добавляется на верхний контейнер страницы.
+  Например:
+  <main className="topic-page topic-state">
+
+  Внутренние элементы используют --topic-color.
+*/
+
+.topic-page.topic-basics {
+    --topic-color: var(--color-basics);
+    --topic-color-light: var(--color-basics-light);
+}
+
+.topic-page.topic-components {
+    --topic-color: var(--color-components);
+    --topic-color-light: var(--color-components-light);
+}
+
+.topic-page.topic-props {
+    --topic-color: var(--color-props);
+    --topic-color-light: var(--color-props-light);
+}
+
+.topic-page.topic-state {
+    --topic-color: var(--color-state);
+    --topic-color-light: var(--color-state-light);
+}
+
+.topic-page.topic-hooks {
+    --topic-color: var(--color-hooks);
+    --topic-color-light: var(--color-hooks-light);
+}
+
+.topic-page.topic-router {
+    --topic-color: var(--color-router);
+    --topic-color-light: var(--color-router-light);
+}
+
+.topic-page.topic-performance {
+    --topic-color: var(--color-performance);
+    --topic-color-light: var(--color-performance-light);
+}
+
+.topic-page.topic-advanced {
+    --topic-color: var(--color-advanced);
+    --topic-color-light: var(--color-advanced-light);
+}
+
+/* =========================================================
+   19. РАЗДЕЛЫ СТРАНИЦЫ ТЕМЫ
+   ========================================================= */
+
+/*
+  Одинаковая структура для:
+  - Кратко;
+  - Пример;
+  - Подводные камни;
+  - Документация.
+*/
+.topic-section {
+    padding: var(--space-8) 0;
+    border-top: 1px solid var(--border);
+}
+
+.section-label {
+    margin: 0 0 var(--space-4);
+    color: var(--text-secondary);
+    font-size: var(--text-small);
+    font-weight: var(--font-bold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.topic-text {
+    max-width: 760px;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: var(--text-normal);
+    line-height: var(--line-text);
+}
+
+/* =========================================================
+   20. БЛОК КОДА
+   ========================================================= */
+
+/*
+  Код всегда тёмный.
+  Это помогает визуально отделить код от объяснений
+  и сохраняет ощущение редактора.
+*/
+.code-block {
+    overflow: hidden;
+    border: 1px solid var(--border-code);
+    border-radius: var(--radius-card);
+    background: var(--bg-code);
+    color: var(--text-code);
+}
+
+/* Верхняя строка блока кода */
+.code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 44px;
+    padding: 0 var(--space-4);
+    border-bottom: 1px solid var(--border-code);
+    color: var(--text-muted);
+    font-family: var(--font-code);
+    font-size: var(--text-small);
+}
+
+/* Область с кодом */
+.code-content {
+    margin: 0;
+    padding: var(--space-5);
+    overflow-x: auto;
+    color: var(--text-code);
+    font-family: var(--font-code);
+    font-size: var(--text-medium);
+    line-height: var(--line-code);
+    white-space: pre;
+}
+
+/* Кнопка Copy */
+.copy-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--border-code);
+    border-radius: var(--radius-small);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: var(--text-small);
+    transition:
+            background-color var(--transition-fast),
+            color var(--transition-fast);
+}
+
+.copy-button:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-code);
+}
+
+/* =========================================================
+   21. ПОДВОДНЫЕ КАМНИ / WARNING
+   ========================================================= */
+
+.warning {
+    padding: var(--space-5);
+    border: 1px solid var(--color-warning);
+    border-left-width: 4px;
+    border-radius: var(--radius-medium);
+    background: var(--color-state-light);
+}
+
+.warning-title {
+    margin: 0 0 var(--space-3);
+    color: var(--text-main);
+    font-size: var(--text-medium);
+    font-weight: var(--font-bold);
+}
+
+.warning-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+    padding-left: var(--space-5);
+    color: var(--text-secondary);
+    font-size: var(--text-medium);
+}
+
+.warning-list strong {
+    color: var(--text-main);
+}
+
+/* =========================================================
+   22. ДОКУМЕНТАЦИЯ
+   ========================================================= */
+
+/*
+  Ссылка ведёт на официальную документацию React
+  или соответствующей библиотеки.
+  Цвет автоматически совпадает с цветом темы.
+*/
+.docs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--topic-color, var(--color-react));
+    font-size: var(--text-normal);
+    font-weight: var(--font-semibold);
+    transition:
+            gap var(--transition-fast),
+            opacity var(--transition-fast);
+}
+
+.docs-link:hover {
+    gap: var(--space-3);
+    opacity: 0.8;
+}
+
+/* =========================================================
+   23. ПРАВЫЙ SIDEBAR НА TOPIC PAGE
+   ========================================================= */
+
+/*
+  На странице темы правый Sidebar превращается
+  в навигацию по текущей странице.
+  Пример:
+  НА ЭТОЙ СТРАНИЦЕ
+  • Кратко
+  • Пример
+  • Подводные камни
+  • Документация
+*/
+.topic-navigation {
+    padding: var(--space-5);
+}
+
+.topic-navigation-card {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-6));
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--bg-card);
+    box-shadow: var(--shadow-card);
+}
+
+.topic-navigation-title {
+    margin: 0 0 var(--space-4);
+    color: var(--text-main);
+    font-size: var(--text-small);
+    font-weight: var(--font-bold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.topic-navigation-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.topic-navigation-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-small);
+    color: var(--text-secondary);
+    font-size: var(--text-medium);
+    transition:
+            background-color var(--transition-fast),
+            color var(--transition-fast);
+}
+
+.topic-navigation-link:hover,
+.topic-navigation-link.active {
+    background: var(--topic-color-light, var(--color-react-light));
+    color: var(--topic-color, var(--color-react));
+}
+
+/* =========================================================
+   24. МОБИЛЬНАЯ ВЕРСИЯ
+   ========================================================= */
+
+/*
+  На мобильном:
+  - Header остаётся сверху;
+  - Sidebar превращается в Drawer;
+  - правая информационная панель скрывается;
+  - карточки становятся в один столбец;
+  - Intro становится одной колонкой;
+  - код получает горизонтальный скролл.
+
+  Drawer лучше реализовать через Ant Design Drawer
+  или собственный компонент React.
+*/
+.mobile-menu-button {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .app-content {
+        grid-template-columns:
+      var(--sidebar-width)
+      minmax(0, 1fr);
+    }
+
+    .right-sidebar {
+        display: none;
+    }
+
+    .catalog-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .app-content {
+        display: block;
+    }
+
+    .left-sidebar {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        border: 0;
+        border-radius: var(--radius-small);
+        background: transparent;
+        color: var(--text-main);
+    }
+
+    .header-logo-title {
+        font-size: var(--text-medium);
+    }
+
+    .main {
+        padding:
+                var(--space-8)
+                var(--mobile-padding);
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+        padding-top: var(--space-4);
+    }
+
+    .intro-image {
+        min-height: 180px;
+    }
+
+    .intro-image img {
+        width: min(100%, 380px);
+    }
+
+    .title-main {
+        font-size: 36px;
+    }
+
+    .catalog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        padding: 0 var(--mobile-padding);
+    }
+
+    .header-logo-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .header-logo-title {
+        font-size: var(--text-medium);
+    }
+
+    .intro {
+        gap: var(--space-4);
+    }
+
+    .intro-image {
+        display: none;
+    }
+
+    .title-main {
+        font-size: 32px;
+    }
+
+    .intro-description {
+        font-size: var(--text-medium);
+    }
+
+    .home-search {
+        width: 100%;
+    }
+
+    .catalog-title {
+        font-size: 28px;
+    }
+
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topic-card {
+        min-height: 0;
+    }
+
+    .title-page {
+        font-size: 32px;
+    }
+
+    .topic-title-row {
+        gap: var(--space-3);
+    }
+
+    .topic-title-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .topic-section {
+        padding: var(--space-6) 0;
+    }
+
+    .code-content {
+        font-size: 12px;
+    }
+}
+
+/* =========================================================
+   25. ДОСТУПНОСТЬ: УМЕНЬШЕНИЕ АНИМАЦИЙ
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
