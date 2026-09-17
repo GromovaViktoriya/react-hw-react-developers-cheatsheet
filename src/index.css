@@ -437,16 +437,15 @@ input:focus-visible {
 
 /* Настройки заголовка группы */
 .left-sidebar .ant-menu-submenu-title {
-    /* margin-bottom: 20px — расстояние от заголовка до его первого пункта */
     margin: 0 !important;
     color: var(--text-muted) !important;
     font-size: 12px !important;
     letter-spacing: 0.09em;
     text-transform: uppercase;
     padding: 0 15px !important;
-    height: 38px !important;
+    height: 36px !important;
     line-height: 38px !important;
-    cursor: default !important; /* Убираем курсор-указатель */
+    cursor: default !important;
 }
 
 /* Отключаем hover-эффект для заголовков групп */
@@ -470,27 +469,17 @@ input:focus-visible {
     display: flex !important;
     align-items: center;
     gap: 15px;
-    min-height: 38px;
+    min-height: 36px;
     height: auto !important;
 
-    /* Фиксируем внутренние отступы (padding) */
-    padding-block: 8px !important;
-    padding-inline: 12px !important;
     padding-inline-start: 12px !important;
 
     border-radius: 6px !important;
     color: var(--text-secondary) !important;
     font-size: 14px !important;
 
-    /* margin-bottom: 25px — расстояние от текста до текста между пунктами */
     margin: 0 !important;
-    width: calc(100% - 24px) !important;
     line-height: normal !important;
-}
-
-/* Убираем нижний отступ у самого последнего пункта в группе */
-.left-sidebar .ant-menu-item:last-child {
-    margin-bottom: 0 !important;
 }
 
 /* Убираем внутренний отступ между иконкой и текстом от Ant Design */
@@ -501,9 +490,9 @@ input:focus-visible {
 /* Настраиваем иконки */
 .left-sidebar .ant-menu-item-icon {
     display: inline-flex;
-    width: 20px;
+    width: 18px;
     flex-shrink: 0;
-    font-size: 20px !important;
+    font-size: 18px !important;
 }
 
 /* =========================================
@@ -526,7 +515,7 @@ input:focus-visible {
 .left-sidebar .ant-menu-item-selected::before {
     content: "";
     position: absolute;
-    inset: 4px auto 4px 0;
+    inset: 0;
     width: 3px;
     border-radius: 999px;
     background: var(--color-primary);
@@ -545,11 +534,104 @@ input:focus-visible {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding-top: 16px;
+    padding: 20px;
     border-left: 1px solid var(--border);
     background: var(--bg-sidebar);
     scrollbar-width: thin;
+}
+.app .right-sidebar-card,
+.app .topic-navigation-card {
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+}
 
+.right-sidebar-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 16px;
+}
+
+.right-sidebar-intro {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+.right-sidebar-divider {
+    height: 1px;
+    margin: 20px 0;
+    border: 0;
+    background: var(--border);
+}
+
+.right-sidebar-title {
+    margin: 0 0 16px;
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.right-sidebar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.right-sidebar-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.right-sidebar-list-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    margin-top: 2px;
+    color: var(--text-secondary);
+    font-size: 18px;
+}
+
+.motivation {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid var(--border-warning);
+    border-radius: 8px;
+    background: var(--bg-warning);
+    margin-top: 16px;
+}
+
+.motivation-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: var(--color-warning);
+    font-size: 28px;
+}
+
+.motivation-text {
+     margin: 0;
+     color: var(--text-secondary);
+     font-size: 14px;
+     line-height: 1.65;
+ }
+
+.motivation-text + .motivation-text {
+    margin-top: 12px;
+}
+
+.motivation-text .ui-icon {
+    color: var(--color-primary);
+    font-size: 16px;
+    vertical-align: middle;
 }
 
 /* =========================================================

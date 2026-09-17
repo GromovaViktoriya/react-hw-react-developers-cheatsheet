@@ -4,6 +4,7 @@ import {LeftSidebar} from "./components/LeftSidebar/LeftSidebar.jsx";
 import {Footer} from "./components/Footer/Footer.jsx";
 import ThemeContext from "./contexts/ThemeContext/ThemeContext.js";
 import {useEffect, useState} from "react";
+import {RightSidebar} from "./components/RightSidebar/RightSidebar.jsx";
 
 const {Sider, Content} = Layout;
 
@@ -22,7 +23,7 @@ function App() {
                 <Layout className='app-content'>
                     <LeftSidebar/>
                     <Content className='main'/>
-                    <Sider className='right-sidebar' width={276}/>
+                    <RightSidebar/>
                 </Layout>
                 <Footer/>
             </Layout>
