@@ -401,10 +401,140 @@ input:focus-visible {
 .left-sidebar {
     overflow-y: auto;
     overscroll-behavior: contain;
-    padding: 20px 12px;
+    padding: 20px 10px;
     border-right: 1px solid var(--border);
     background: var(--bg-sidebar);
     scrollbar-width: thin;
+}
+/* =========================================
+   1. ОБЩИЕ СТИЛИ МЕНЮ
+   ========================================= */
+
+/* Убираем стандартную правую границу меню и фон */
+.left-sidebar .ant-menu {
+    border-inline-end: none !important;
+    background: transparent !important;
+}
+
+/* Убираем фон у раскрывающегося списка */
+.left-sidebar .ant-menu-sub {
+    background: transparent !important;
+}
+
+/* =========================================
+   2. ГРУППЫ И ЗАГОЛОВКИ (Project, React basics)
+   ========================================= */
+
+/* Расстояние от последнего пункта текущей группы до заголовка следующей = 35px */
+.left-sidebar .ant-menu-submenu {
+    margin-bottom: 10px !important;
+}
+
+/* У последней группы убираем лишний отступ снизу */
+.left-sidebar .ant-menu-submenu:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Настройки заголовка группы */
+.left-sidebar .ant-menu-submenu-title {
+    /* margin-bottom: 20px — расстояние от заголовка до его первого пункта */
+    margin: 0 !important;
+    color: var(--text-muted) !important;
+    font-size: 12px !important;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 0 15px !important;
+    height: 38px !important;
+    line-height: 38px !important;
+    cursor: default !important; /* Убираем курсор-указатель */
+}
+
+/* Отключаем hover-эффект для заголовков групп */
+.left-sidebar .ant-menu-submenu-title:hover {
+    background: transparent !important;
+    color: var(--text-muted) !important;
+}
+
+/* Прячем стрелку раскрытия подменю */
+.left-sidebar .ant-menu-submenu-arrow {
+    display: none !important;
+}
+
+/* =========================================
+   3. ПУНКТЫ МЕНЮ (menu-items)
+   ========================================= */
+
+/* Настройки самого пункта */
+.left-sidebar .ant-menu-item {
+    position: relative;
+    display: flex !important;
+    align-items: center;
+    gap: 15px;
+    min-height: 38px;
+    height: auto !important;
+
+    /* Фиксируем внутренние отступы (padding) */
+    padding-block: 8px !important;
+    padding-inline: 12px !important;
+    padding-inline-start: 12px !important;
+
+    border-radius: 6px !important;
+    color: var(--text-secondary) !important;
+    font-size: 14px !important;
+
+    /* margin-bottom: 25px — расстояние от текста до текста между пунктами */
+    margin: 0 !important;
+    width: calc(100% - 24px) !important;
+    line-height: normal !important;
+}
+
+/* Убираем нижний отступ у самого последнего пункта в группе */
+.left-sidebar .ant-menu-item:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Убираем внутренний отступ между иконкой и текстом от Ant Design */
+.left-sidebar .ant-menu-item .ant-menu-title-content {
+    margin-inline-start: 0 !important;
+}
+
+/* Настраиваем иконки */
+.left-sidebar .ant-menu-item-icon {
+    display: inline-flex;
+    width: 20px;
+    flex-shrink: 0;
+    font-size: 20px !important;
+}
+
+/* =========================================
+   4. СОСТОЯНИЯ (Hover и Active)
+   ========================================= */
+
+/* Hover (наведение) для кликабельных пунктов */
+.left-sidebar .ant-menu-item:hover {
+    background: var(--bg-hover) !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Активный (выбранный) пункт */
+.left-sidebar .ant-menu-item-selected {
+    background: var(--bg-active) !important;
+    color: var(--color-primary) !important;
+}
+
+/* Кастомная синяя полоска слева для активного пункта */
+.left-sidebar .ant-menu-item-selected::before {
+    content: "";
+    position: absolute;
+    inset: 4px auto 4px 0;
+    width: 3px;
+    border-radius: 999px;
+    background: var(--color-primary);
+}
+
+/* Отключаем стандартную синюю полоску Ant Design, которая рисуется справа */
+.left-sidebar .ant-menu-item::after {
+    display: none !important;
 }
 /* =========================================================
    8. ПРАВЫЙ SIDEBAR
