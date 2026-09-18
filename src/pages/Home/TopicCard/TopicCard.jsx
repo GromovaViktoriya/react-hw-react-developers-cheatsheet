@@ -1,5 +1,5 @@
 import {Card} from "antd";
-import {menuItems, topicGroups} from "../../data/data.jsx";
+import {menuItems, topicGroups} from "../../../data/data.jsx";
 import {Link, useNavigate} from "react-router";
 import {ArrowRightOutlined} from "@ant-design/icons";
 

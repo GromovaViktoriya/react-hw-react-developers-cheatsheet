@@ -1,4 +1,4 @@
-import {TopicCard} from "../../../../components/TopicCard/TopicCard.jsx";
+import {TopicCard} from "../../TopicCard/TopicCard.jsx";
 import {Empty} from "antd";
 
 export const CatalogGrid = ({query, setQuery, topicsFound, displayedTopics}) => {

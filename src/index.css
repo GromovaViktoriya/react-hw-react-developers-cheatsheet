@@ -1,73 +1,30 @@
-/* =======================================================
-REACT DEVELOPER CHEATSHEET
-Единый CSS-файл проекта
-1. ПЕРЕМЕННЫЕ ПРОЕКТА
- ======================================================= */
-
+/* =========================================================
+   VARIABLES
+   ========================================================= */
 :root {
-    /* =======================================================
-       ЦВЕТА LIGHT MODE
-       ======================================================= */
-
-    /* Общий фон приложения */
     --bg-page: #F5FAFE;
-
-    /* Фон Header и карточек */
     --bg-card: #FFFFFF;
-
-    /* Фон левого и правого Sidebar */
     --bg-sidebar: #FFFFFF;
-
-    /* Более спокойный фон для поля поиска */
     --bg-input: #F8FAFC;
-
-    /* Фон элемента при наведении */
     --bg-hover: #F1F5F9;
-
-    /* Фон активного пункта меню */
     --bg-active: #EAF3FF;
 
-    /* ---------- Цвет текста ---------- */
-    /* Главный текст: заголовки, названия тем */
     --text-main: #182B49;
-
-    /* Второстепенный текст: описания и пояснения */
     --text-secondary: #667085;
-
-    /* Маленькие и менее важные подписи */
     --text-muted: #98A2B3;
-
-    /* Белый текст на цветном фоне */
     --text-white: #FFFFFF;
 
-    /* ---------- Границы ---------- */
-    /* Обычная граница карточек, Sidebar и Header */
     --border: #E1E8F0;
-
-    /* Более заметная граница */
     --border-strong: #CBD5E1;
 
-    /* ---------- Код ---------- */
     --bg-code: #F5F7FA;
-    /* Основной цвет текста в коде */
     --text-code: #667085;
-    /* Граница блока кода */
     --border-code: #E1E8F0;
 
-    /* =======================================================
-       ЦВЕТА ТЕМ
-       ======================================================= */
-
-    /* Общий фирменный цвет React и основной акцент интерфейса */
     --color-react: #08A9F5;
-    /* Акцент для навигации и ссылок отличается от декоративного React-голубого:
-   более тёмный текст легче читать на светлом фоне. */
     --color-primary: #006cdb;
     --color-primary-hover: #0053b5;
 
-    /* У каждой группы три цвета:
-       основной — линия/иконка; ink — маленький текст; light — фон иконки.
-       Props и State относятся к Basics, Performance — к Advanced. */
     --color-basics: #1685ff;
     --color-basics-ink: #006cdb;
     --color-basics-light: #e1f1ff;
@@ -96,8 +53,6 @@ REACT DEVELOPER CHEATSHEET
     --color-storage-ink: #a16207;
     --color-storage-light: #fef08a;
 
-    /* ---------- Служебные цвета ---------- */
-    /* Предупреждение независимо от цвета State и выбранной категории. */
     --bg-warning: #fff9ed;
     --border-warning: #efa922;
     --color-warning: #b77700;
@@ -106,41 +61,27 @@ REACT DEVELOPER CHEATSHEET
     --color-error: #cc3653;
     --color-info: #006cdb;
 
-    /* =======================================================
-       ГАБАРИТЫ ОСНОВНЫХ ОБЛАСТЕЙ
-       ======================================================= */
-    /* Высота верхнего Header */
     --header-height: 64px;
     --footer-height: 55px;
-    /* Ширина левого Sidebar */
     --sidebar-width: 240px;
-    /* Ширина правого Sidebar */
     --right-sidebar-width: 276px;
 
-    /* =======================================================
-       ТЕНИ
-       ======================================================= */
-    /* Очень лёгкая тень обычной карточки */
     --shadow-card: 0 2px 8px rgba(16, 24, 40, 0.04);
-    /* Тень карточки при наведении */
     --shadow-card-hover: 0 8px 24px rgba(16, 24, 40, 0.08);
     --focus-ring: 0 0 0 3px rgb(0 108 219 / 18%);
 
-    /* =======================================================
-       АНИМАЦИИ
-       ======================================================= */
-    /* Для кнопок, ссылок и пунктов меню */
     --transition-fast: 150ms ease;
-    /* Для карточек */
     --transition-normal: 220ms ease;
-    /* Для переключения темы */
     --transition-theme: 300ms ease;
+
+    --scrollbar-track: transparent;
+    --scrollbar-thumb: var(--border-strong);
+    --scrollbar-thumb-hover: var(--text-muted);
 }
 
 /* =========================================================
-   2. DARK MODE
-   =========================================================
- */
+   DARK MODE
+   ========================================================= */
 [data-theme="dark"] {
     --bg-page: #0D1420;
     --bg-card: #131D2B;
@@ -204,15 +145,15 @@ REACT DEVELOPER CHEATSHEET
     --shadow-card: none;
     --shadow-card-hover: 0 8px 24px rgb(0 0 0 / 22%);
     --focus-ring: 0 0 0 3px rgb(0 198 250 / 24%);
+
+    --scrollbar-thumb: var(--border-strong);
+    --scrollbar-thumb-hover: var(--text-muted);
 }
 
 /* =========================================================
-   3. СБРОС И ОБЩИЕ СТИЛИ
+   GLOBAL STYLES & RESET
    ========================================================= */
-
-*,
-*::before,
-*::after {
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
@@ -230,13 +171,10 @@ body {
     font-family: "Manrope Variable", "Manrope", "Segoe UI", Arial, sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    transition: background-color var(--transition-theme),
-    color var(--transition-theme);
+    transition: background-color var(--transition-theme), color var(--transition-theme);
 }
 
-button,
-input,
-textarea {
+button, input, textarea {
     font: inherit;
 }
 
@@ -254,15 +192,53 @@ img {
     max-width: 100%;
 }
 
-button:focus-visible,
-a:focus-visible,
-input:focus-visible {
+button:focus-visible, a:focus-visible, input:focus-visible {
     outline: none;
     box-shadow: var(--focus-ring);
 }
 
+.title-main,
+.title-main-accent,
+.title-page {
+    font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
 /* =========================================================
-   4. ОСНОВНОЙ КАРКАС ПРИЛОЖЕНИЯ
+   SCROLLBAR
+   ========================================================= */
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+}
+
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* =========================================================
+   APP LAYOUT
    ========================================================= */
 .app {
     margin: 0 auto;
@@ -270,8 +246,7 @@ input:focus-visible {
     min-height: 100vh;
     background: var(--bg-page);
     color: var(--text-main);
-    transition: background-color var(--transition-theme),
-    color var(--transition-theme);
+    transition: background-color var(--transition-theme), color var(--transition-theme);
     border: 1px solid var(--border);
     border-radius: 16px;
 }
@@ -282,25 +257,31 @@ input:focus-visible {
     min-height: calc(100vh - var(--header-height) - 2px);
 }
 
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    width: 100%;
+    padding: 32px 32px calc(24px + var(--footer-height));
+    background: var(--bg-page);
+}
+
 /* =========================================================
-   5. HEADER
+   HEADER
    ========================================================= */
 .header {
     height: var(--header-height);
     padding-inline: 24px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-
     border-bottom: 1px solid var(--border);
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
     background: var(--bg-card);
-    transition: background-color var(--transition-theme),
-    border-color var(--transition-theme);
-
+    transition: background-color var(--transition-theme), border-color var(--transition-theme);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -339,7 +320,7 @@ input:focus-visible {
 }
 
 /* =========================================================
-   6. ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ
+   THEME TOGGLE (ANTD OVERRIDES)
    ========================================================= */
 .theme-toggle.ant-segmented {
     flex-shrink: 0;
@@ -348,6 +329,7 @@ input:focus-visible {
     border: none !important;
     border-radius: 999px;
 }
+
 [data-theme="dark"] .theme-toggle.ant-segmented {
     background: #0B121C !important;
 }
@@ -414,13 +396,14 @@ input:focus-visible {
     min-height: 36px;
     padding: 0;
 }
+
 .theme-toggle .ant-segmented-item-icon {
     margin: 0;
     font-size: 20px;
 }
 
 /* =========================================================
-   7. ЛЕВЫЙ SIDEBAR
+   LEFT SIDEBAR
    ========================================================= */
 .left-sidebar {
     overflow-y: auto;
@@ -432,17 +415,16 @@ input:focus-visible {
     top: var(--header-height);
     height: calc(100vh - var(--header-height) - 2px);
     padding: 20px 10px calc(20px + var(--footer-height));
-
     border-bottom-left-radius: 16px;
+}
+
+.left-sidebar .ant-menu,
+.left-sidebar .ant-menu-sub {
+    background: transparent !important;
 }
 
 .left-sidebar .ant-menu {
     border-inline-end: none !important;
-    background: transparent !important;
-}
-
-.left-sidebar .ant-menu-sub {
-    background: transparent !important;
 }
 
 .left-sidebar .ant-menu-submenu {
@@ -466,11 +448,11 @@ input:focus-visible {
 }
 
 .left-sidebar .ant-menu-submenu-title:hover {
-    background: transparent !important;
     color: var(--text-muted) !important;
 }
 
-.left-sidebar .ant-menu-submenu-arrow {
+.left-sidebar .ant-menu-submenu-arrow,
+.left-sidebar .ant-menu-item::after {
     display: none !important;
 }
 
@@ -481,13 +463,10 @@ input:focus-visible {
     gap: 15px;
     min-height: 36px;
     height: auto !important;
-
     padding-inline-start: 12px !important;
-
     border-radius: 6px !important;
     color: var(--text-secondary) !important;
     font-size: 14px !important;
-
     margin: 0 !important;
     line-height: normal !important;
 }
@@ -522,13 +501,9 @@ input:focus-visible {
     background: var(--color-primary);
 }
 
-.left-sidebar .ant-menu-item::after {
-    display: none !important;
-}
 /* =========================================================
-   8. ПРАВЫЙ SIDEBAR
+   RIGHT SIDEBAR
    ========================================================= */
-
 .right-sidebar {
     width: 100%;
     display: flex;
@@ -543,7 +518,6 @@ input:focus-visible {
     height: calc(100vh - var(--header-height) - 2px);
     overflow-y: auto;
     align-self: flex-start;
-
     border-bottom-right-radius: 16px;
 }
 
@@ -607,9 +581,8 @@ input:focus-visible {
 }
 
 /* =========================================================
-   БЛОК МОТИВАЦИИ (Motivation)
+   MOTIVATION BLOCK
    ========================================================= */
-
 .motivation {
     display: flex;
     align-items: flex-start;
@@ -617,8 +590,6 @@ input:focus-visible {
     padding: 16px;
     border-radius: 8px;
     margin-top: 16px;
-
-    /* Лиловые (волшебные) оттенки для светлой темы */
     background: #faf5ff;
     border: 1px solid #e9d5ff;
 }
@@ -626,11 +597,9 @@ input:focus-visible {
 .motivation-icon {
     display: inline-flex;
     flex-shrink: 0;
-
-    /* Обновленные габариты и цвет */
     font-size: 18px;
     margin-top: 2px;
-    color: #a855f7; /* Насыщенный лиловый акцент */
+    color: #a855f7;
 }
 
 .motivation-text {
@@ -650,9 +619,7 @@ input:focus-visible {
     vertical-align: middle;
 }
 
-/* --- Dark Mode адаптация --- */
 [data-theme="dark"] .motivation {
-    /* Приглушенные лиловые тона для темной темы */
     background: rgba(89, 66, 112, 0.1);
     border-color: rgba(168, 85, 247, 0.2);
 }
@@ -662,13 +629,8 @@ input:focus-visible {
 }
 
 /* =========================================================
-   НАВИГАЦИЯ ПО ТЕМЕ (TopicNavigation в RightSidebar)
+   TOPIC NAVIGATION
    ========================================================= */
-
-.topic-navigation-card{
-    margin-bottom: 16px;
-}
-
 .topic-navigation-title {
     margin: 0 0 12px;
     color: var(--text-muted);
@@ -715,20 +677,8 @@ input:focus-visible {
 }
 
 /* =========================================================
-  MAIN
+   HOME INTRO & SEARCH
    ========================================================= */
-.main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    width: 100%;
-    padding: 32px 32px calc(24px + var(--footer-height));
-    background: var(--bg-page);
-
-}
-
-/* --- Вступление (IntroHomeText) --- */
 .intro {
     display: grid;
     grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
@@ -750,7 +700,6 @@ input:focus-visible {
 }
 
 .title-main {
-    font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     color: var(--text-main);
     font-size: 44px;
@@ -760,7 +709,6 @@ input:focus-visible {
 }
 
 .title-main-accent {
-    font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     display: block;
     color: var(--color-primary);
 }
@@ -785,19 +733,6 @@ input:focus-visible {
     height: auto;
 }
 
-.catalog-header {
-    margin-bottom: 20px;
-}
-
-.catalog-title {
-    margin: 0;
-    color: var(--text-main);
-    font-size: 28px;
-    font-weight: 800;
-    line-height: 1.2;
-}
-
-/* --- Поиск (Search) --- */
 .home-search .ant-input-affix-wrapper {
     width: 100%;
     max-width: 680px;
@@ -825,10 +760,7 @@ input:focus-visible {
     color: var(--text-main) !important;
 }
 
-.home-search .ant-input::placeholder {
-    color: var(--text-muted);
-}
-
+.home-search .ant-input::placeholder,
 .home-search .ant-input-prefix,
 .home-search .ant-input-clear-icon {
     color: var(--text-muted);
@@ -838,41 +770,9 @@ input:focus-visible {
     color: var(--text-main);
 }
 
-
-.catalog-grid .ant-empty {
-    grid-column: 1 / -1;
-    padding: 32px;
-    border: 1px dashed var(--border-strong);
-    border-radius: 8px;
-    background: transparent;
-}
-
-
 /* =========================================================
-   КАТАЛОГ И КАРТОЧКИ ТЕМ (TopicCard)
+   CATALOG & TOPIC CARDS
    ========================================================= */
-.catalog-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 16px;
-}
-
-
-.catalog-grid .ant-empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    border: none;
-    background: transparent;
-}
-
-.catalog-grid .ant-empty .ant-empty-description {
-    color: var(--text-secondary);
-    font-size: 14px;
-}
-
 .catalog-header {
     display: flex;
     align-items: center;
@@ -887,6 +787,30 @@ input:focus-visible {
     font-size: 28px;
     font-weight: 800;
     line-height: 1.2;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.catalog-grid .ant-empty {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 32px;
+    border: 1px dashed var(--border-strong);
+    border-radius: 8px;
+    background: transparent;
+}
+
+.catalog-grid .ant-empty .ant-empty-description {
+    color: var(--text-secondary);
+    font-size: 14px;
 }
 
 .catalog-link {
@@ -924,7 +848,6 @@ input:focus-visible {
     min-height: 192px;
     padding: 0;
     border: 1px solid var(--border);
-
     border-top: 5px solid var(--topic-color, var(--color-basics));
     border-radius: 8px;
     background: var(--bg-card);
@@ -1015,47 +938,18 @@ input:focus-visible {
     font-size: 16px;
 }
 
-.topic-project {
-    --topic-color: var(--color-project);
-    --topic-ink: var(--color-project-ink);
-    --topic-color-light: var(--color-project-light);
-}
-
-.topic-basic {
-    --topic-color: var(--color-basics);
-    --topic-ink: var(--color-basics-ink);
-    --topic-color-light: var(--color-basics-light);
-}
-.topic-hooks {
-    --topic-color: var(--color-hooks);
-    --topic-ink: var(--color-hooks-ink);
-    --topic-color-light: var(--color-hooks-light);
-}
-.topic-advanced {
-    --topic-color: var(--color-advanced);
-    --topic-ink: var(--color-advanced-ink);
-    --topic-color-light: var(--color-advanced-light);
-}
-.topic-routing {
-    --topic-color: var(--color-routing);
-    --topic-ink: var(--color-routing-ink);
-    --topic-color-light: var(--color-routing-light);
-}
-.topic-forms {
-    --topic-color: var(--color-forms);
-    --topic-ink: var(--color-forms-ink);
-    --topic-color-light: var(--color-forms-light);
-}
-.topic-storage {
-    --topic-color: var(--color-storage);
-    --topic-ink: var(--color-storage-ink);
-    --topic-color-light: var(--color-storage-light);
-}
+/* Topic Colors Definition */
+.topic-project { --topic-color: var(--color-project); --topic-ink: var(--color-project-ink); --topic-color-light: var(--color-project-light); }
+.topic-basic { --topic-color: var(--color-basics); --topic-ink: var(--color-basics-ink); --topic-color-light: var(--color-basics-light); }
+.topic-hooks { --topic-color: var(--color-hooks); --topic-ink: var(--color-hooks-ink); --topic-color-light: var(--color-hooks-light); }
+.topic-advanced { --topic-color: var(--color-advanced); --topic-ink: var(--color-advanced-ink); --topic-color-light: var(--color-advanced-light); }
+.topic-routing { --topic-color: var(--color-routing); --topic-ink: var(--color-routing-ink); --topic-color-light: var(--color-routing-light); }
+.topic-forms { --topic-color: var(--color-forms); --topic-ink: var(--color-forms-ink); --topic-color-light: var(--color-forms-light); }
+.topic-storage { --topic-color: var(--color-storage); --topic-ink: var(--color-storage-ink); --topic-color-light: var(--color-storage-light); }
 
 /* =========================================================
-   СТРАНИЦА ТЕМЫ (Topic)
+   TOPIC PAGE & CONTENT
    ========================================================= */
-
 .topic-page {
     width: 100%;
     min-width: 0;
@@ -1087,7 +981,6 @@ input:focus-visible {
     gap: 20px;
 }
 
-
 .topic-title-icon {
     display: grid;
     place-items: center;
@@ -1114,7 +1007,6 @@ input:focus-visible {
 }
 
 .title-page {
-    font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     color: var(--text-main);
     font-size: 44px;
@@ -1130,10 +1022,6 @@ input:focus-visible {
     font-size: 16px;
     line-height: 1.5;
 }
-
-/* =========================================================
-   РАЗДЕЛЫ СТАТЬИ И КОНТЕНТ (ArticleBlock)
-   ========================================================= */
 
 .topic-section {
     padding: 12px 0;
@@ -1163,7 +1051,6 @@ input:focus-visible {
     font-weight: 700;
 }
 
-
 .topic-text,
 .topic-section p {
     margin: 0 0 8px;
@@ -1185,16 +1072,15 @@ input:focus-visible {
 }
 
 /* =========================================================
-   БЛОК КОДА (CodeBlock)
+   CODE BLOCK
    ========================================================= */
-
 .code-content {
     min-width: 0;
     overflow: hidden;
     border: 1px solid var(--border-code);
     border-radius: 8px;
     background: var(--bg-code);
-    margin: 16px 0 24px; /* Отступы от текста */
+    margin: 16px 0 24px;
 }
 
 .code-header {
@@ -1211,7 +1097,6 @@ input:focus-visible {
     font-size: 12px;
 }
 
-
 .code-header .ant-typography-copy {
     color: var(--text-secondary);
     font-family: "Inter", "Segoe UI", sans-serif;
@@ -1223,9 +1108,8 @@ input:focus-visible {
 }
 
 /* =========================================================
-   ПОДВОДНЫЕ КАМНИ (Pitfalls)
+   PITFALLS & WARNINGS
    ========================================================= */
-
 .warning {
     display: flex;
     align-items: flex-start;
@@ -1268,29 +1152,22 @@ input:focus-visible {
 }
 
 /* =========================================================
-   БЛОК СОВЕТОВ (Advice)
+   ADVICE / TIPS BLOCK
    ========================================================= */
-
 .right-sidebar-card.advice {
-    /* Легкий зеленый фон для светлой темы */
     background-color: #f0fdf4;
-    /* Зеленая граница */
     border-color: #bbf7d0;
 }
 
-/* Цвет текста в блоке советов */
 .right-sidebar-card.advice .right-sidebar-list-item {
     color: #166534;
 }
 
-/* Цвет иконок в блоке советов */
 .right-sidebar-card.advice .right-sidebar-list-icon {
     color: #22c55e;
 }
 
-/* --- Dark Mode адаптация --- */
 [data-theme="dark"] .right-sidebar-card.advice {
-    /* Темно-зеленый фон для темной темы */
     background-color: rgba(27, 48, 39, 0.3);
     border-color: rgba(52, 211, 153, 0.2);
 }
@@ -1304,9 +1181,8 @@ input:focus-visible {
 }
 
 /* =========================================================
-   ДОКУМЕНТАЦИЯ (DocumentationLink)
+   DOCUMENTATION LINK
    ========================================================= */
-
 .docs-link {
     display: inline-flex;
     align-items: center;
@@ -1335,25 +1211,21 @@ input:focus-visible {
     line-height: 1;
 }
 
-
 /* =========================================================
-  FOOTER
+   FOOTER
    ========================================================= */
 .footer {
     display: flex;
     justify-content: center;
     align-items: center;
     background: var(--bg-card);
-
     height: var(--footer-height);
     padding: 0 24px;
     box-sizing: border-box;
     border-top: 1px solid var(--border);
-    transition: background-color var(--transition-theme),
-    border-color var(--transition-theme);
+    transition: background-color var(--transition-theme), border-color var(--transition-theme);
     border-bottom-right-radius: 16px;
     border-bottom-left-radius: 16px;
-
     position: relative;
     z-index: 10;
     margin-top: calc(-1 * var(--footer-height));
@@ -1373,7 +1245,6 @@ input:focus-visible {
     color: inherit;
     display: flex;
     align-items: center;
-    /* Плавность для самой ссылки */
     transition: color var(--transition-theme) ease;
 }
 
@@ -1388,9 +1259,8 @@ input:focus-visible {
 }
 
 /* =========================================================
-   АДАПТИВНОСТЬ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ
+   MEDIA QUERIES
    ========================================================= */
-
 @media (max-width: 1439px) {
     .intro {
         grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
@@ -1405,7 +1275,7 @@ input:focus-visible {
         grid-template-columns: 1fr;
     }
     .intro-image {
-        display: none; /* Прячем картинку на планшетах */
+        display: none;
     }
 }
 
