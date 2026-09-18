@@ -5,7 +5,7 @@ export const Routing = () => {
     return (
         <>
             <Routes>
-                <Route path="/" component={<Home/>} />
+                <Route path="/" element={<Home/>}/>
             </Routes>
         </>
     )

@@ -4,9 +4,8 @@ import {LeftSidebar} from "./components/LeftSidebar/LeftSidebar.jsx";
 import {Footer} from "./components/Footer/Footer.jsx";
 import ThemeContext from "./contexts/ThemeContext/ThemeContext.js";
 import {useEffect, useState} from "react";
-import {RightSidebar} from "./components/RightSidebar/RightSidebar.jsx";
+import {Routing} from "./Routing/Routing.jsx";
 
-const {Sider, Content} = Layout;
 
 function App() {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
@@ -18,13 +17,12 @@ function App() {
 
     return (
         <ThemeContext.Provider value={{theme, setTheme}}>
-            <Layout className="app">
+            <Layout className="app" hasSider={false}>
                 <Header/>
-                <Layout className='app-content'>
+                <div className='app-content'>
                     <LeftSidebar/>
-                    <Content className='main'/>
-                    <RightSidebar/>
-                </Layout>
+                    <Routing/>
+                </div>
                 <Footer/>
             </Layout>
         </ThemeContext.Provider>

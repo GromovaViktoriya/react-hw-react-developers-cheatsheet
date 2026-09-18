@@ -1,20 +1,20 @@
-import Sider from "antd/es/layout/Sider.js";
 import {BookOutlined, CodeOutlined, ExportOutlined, InfoCircleOutlined, WarningOutlined} from "@ant-design/icons";
-import {ReactArt} from "../../assets/svg/ReactArt.jsx";
 import {Motivation} from "./Motivation/Motivation.jsx";
 import topics from "../../data/data.jsx";
 import {InfoList} from "./InfoList/InfoList.jsx";
+import {IntroText} from "./IntroText/IntroText.jsx";
+import {TopicNavigation} from "../TopicNavigation/TopicNavigation.jsx";
+import {Layout} from "antd";
 
-export const RightSidebar = () => {
+const {Sider} = Layout;
+
+export const RightSidebar = ({isTopic, topic}) => {
     return (
         <Sider className='right-sidebar' width={276}>
             <div className="right-sidebar-card">
-                <ReactArt className="right-sidebar-image" />
-                <p className="right-sidebar-intro">
-                    React — это не сложно, если знать, где искать нужную информацию.
-                </p>
-                <hr className="right-sidebar-divider" />
-                <h2 className="right-sidebar-title">В этом разделе:</h2>
+                {isTopic
+                    ? <TopicNavigation topic={topic} />
+                    : <IntroText/>}
                 <InfoList
                     items={[
                         [BookOutlined, `${topics.length} тем`],
@@ -25,7 +25,7 @@ export const RightSidebar = () => {
                     ]}
                 />
             </div>
-            <Motivation isTopic={false}/>
+            <Motivation isTopic={isTopic}/>
         </Sider>
     )
 }

@@ -71,15 +71,30 @@ REACT DEVELOPER CHEATSHEET
     --color-basics: #1685ff;
     --color-basics-ink: #006cdb;
     --color-basics-light: #e1f1ff;
+
     --color-hooks: #00bfb5;
     --color-hooks-ink: #007d77;
     --color-hooks-light: #ddf9f5;
-    --color-router: #ff4264;
-    --color-router-ink: #c8284b;
-    --color-router-light: #ffe7ed;
+
     --color-advanced: #9252ff;
     --color-advanced-ink: #7235ca;
     --color-advanced-light: #efe5ff;
+
+    --color-project: #f58220;
+    --color-project-ink: #c25400;
+    --color-project-light: #ffedd6;
+
+    --color-routing: #ff4264;
+    --color-routing-ink: #c8284b;
+    --color-routing-light: #ffe7ed;
+
+    --color-forms: #10b981;
+    --color-forms-ink: #047857;
+    --color-forms-light: #d1fae5;
+
+    --color-storage: #eab308;
+    --color-storage-ink: #a16207;
+    --color-storage-light: #fef08a;
 
     /* ---------- Служебные цвета ---------- */
     /* Предупреждение независимо от цвета State и выбранной категории. */
@@ -149,18 +164,35 @@ REACT DEVELOPER CHEATSHEET
     --color-primary: #00c6fa;
     --color-primary-hover: #72dcff;
     --color-react: #00c6ef;
+
     --color-basics: #159dff;
     --color-basics-ink: #38bcff;
     --color-basics-light: #0d3963;
+
     --color-hooks: #00cec4;
     --color-hooks-ink: #28ddd3;
     --color-hooks-light: #06434c;
-    --color-router: #ff476c;
-    --color-router-ink: #ff6d8b;
-    --color-router-light: #5e253b;
+
     --color-advanced: #9d64ff;
     --color-advanced-ink: #bf99ff;
     --color-advanced-light: #352664;
+
+    --color-project: #c25400;
+    --color-project-ink: #f58220;
+    --color-project-light: #431c00;
+
+    --color-routing: #ff476c;
+    --color-routing-ink: #ff6d8b;
+    --color-routing-light: #5e253b;
+
+    --color-forms: #047857;
+    --color-forms-ink: #34d399;
+    --color-forms-light: #064e3b;
+
+    --color-storage: #a16207;
+    --color-storage-ink: #fde047;
+    --color-storage-light: #422006;
+
     --bg-warning: #231f13;
     --border-warning: #c29523;
     --color-warning: #f0c542;
@@ -246,11 +278,8 @@ input:focus-visible {
 }
 
 .app-content {
-    display: grid;
-    grid-template-columns:
-            var(--sidebar-width)
-            minmax(0, 1fr)
-            var(--right-sidebar-width);
+    display: flex;
+    align-items: stretch;
     min-height: calc(100vh - (var(--header-height) + var(--footer-height)));
 }
 
@@ -272,7 +301,6 @@ input:focus-visible {
     border-color var(--transition-theme);
 }
 
-/* Левая часть Header: React-логотип + название */
 .header-logo {
     display: flex;
     align-items: center;
@@ -283,7 +311,6 @@ input:focus-visible {
     text-decoration: none;
 }
 
-/* Изображение/иконка React */
 .header-logo-icon {
     width: 42px;
     height: 42px;
@@ -291,7 +318,6 @@ input:focus-visible {
     color: var(--color-react);
 }
 
-/* Название проекта */
 .header-logo-title {
     margin: 0;
     color: var(--text-main);
@@ -300,7 +326,6 @@ input:focus-visible {
     line-height: 1.25;
 }
 
-/* Правая часть Header */
 .header-actions {
     display: flex;
     align-items: center;
@@ -311,7 +336,6 @@ input:focus-visible {
 /* =========================================================
    6. ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ
    ========================================================= */
-/* Общий контейнер (Без анимации фона, чтобы не было вспышек при рефреше) */
 .theme-toggle.ant-segmented {
     flex-shrink: 0;
     background: var(--bg-active) !important;
@@ -323,27 +347,22 @@ input:focus-visible {
     background: #0B121C !important;
 }
 
-/* Базовые элементы (неактивные иконки) */
 .theme-toggle .ant-segmented-item {
     color: var(--text-muted) !important;
     background-color: transparent !important;
     border-radius: 999px;
-    transition: color 0.15s ease !important; /* Только плавная смена цвета иконки */
+    transition: color 0.15s ease !important;
 }
 
-/* --- 1. ХОВЕР НА НЕАКТИВНОЙ ИКОНКЕ --- */
 .theme-toggle .ant-segmented-item:hover:not(.ant-segmented-item-selected) {
     color: var(--text-secondary) !important;
-    background-color: rgba(0, 0, 0, 0.05) !important; /* Светлый серый кружок */
+    background-color: rgba(0, 0, 0, 0.05) !important;
 }
 [data-theme="dark"] .theme-toggle .ant-segmented-item:hover:not(.ant-segmented-item-selected) {
     color: var(--text-main) !important;
-    background-color: rgba(255, 255, 255, 0.12) !important; /* Светлый кружок, теперь 100% виден в темноте! */
+    background-color: rgba(255, 255, 255, 0.12) !important;
 }
 
-/* --- 2. КРУЖОК И ПОЛЗУНОК ---
-   Делаем их абсолютно одинаковыми. Когда ползунок приедет и исчезнет,
-   под ним останется фон самой кнопки. */
 .theme-toggle .ant-segmented-thumb,
 .theme-toggle .ant-segmented-item-selected {
     background-color: var(--bg-card) !important;
@@ -356,8 +375,6 @@ input:focus-visible {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 2px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Оставляем анимацию ТОЛЬКО для движения ползунка.
-   Это убьет любые белые вспышки при обновлении страницы. */
 .theme-toggle .ant-segmented-thumb {
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
 }
@@ -365,7 +382,6 @@ input:focus-visible {
     transition: none !important;
 }
 
-/* --- 3. ХОВЕР НА ВЫБРАННОМ КРУЖКЕ --- */
 .theme-toggle .ant-segmented-item-selected:hover {
     background-color: #F8FAFC !important;
 }
@@ -373,7 +389,6 @@ input:focus-visible {
     background-color: #253449 !important;
 }
 
-/* --- 4. ЦВЕТ ИКОНОК --- */
 .theme-toggle .ant-segmented-item-selected,
 .theme-toggle .ant-segmented-item-selected .ant-segmented-item-icon {
     color: var(--color-primary) !important;
@@ -382,7 +397,6 @@ input:focus-visible {
     color: var(--color-primary-hover) !important;
 }
 
-/* Размеры и центрирование */
 .theme-toggle .ant-segmented-item-label {
     display: grid;
     place-items: center;
@@ -406,36 +420,24 @@ input:focus-visible {
     background: var(--bg-sidebar);
     scrollbar-width: thin;
 }
-/* =========================================
-   1. ОБЩИЕ СТИЛИ МЕНЮ
-   ========================================= */
 
-/* Убираем стандартную правую границу меню и фон */
 .left-sidebar .ant-menu {
     border-inline-end: none !important;
     background: transparent !important;
 }
 
-/* Убираем фон у раскрывающегося списка */
 .left-sidebar .ant-menu-sub {
     background: transparent !important;
 }
 
-/* =========================================
-   2. ГРУППЫ И ЗАГОЛОВКИ (Project, React basics)
-   ========================================= */
-
-/* Расстояние от последнего пункта текущей группы до заголовка следующей = 35px */
 .left-sidebar .ant-menu-submenu {
     margin-bottom: 10px !important;
 }
 
-/* У последней группы убираем лишний отступ снизу */
 .left-sidebar .ant-menu-submenu:last-child {
     margin-bottom: 0 !important;
 }
 
-/* Настройки заголовка группы */
 .left-sidebar .ant-menu-submenu-title {
     margin: 0 !important;
     color: var(--text-muted) !important;
@@ -448,22 +450,15 @@ input:focus-visible {
     cursor: default !important;
 }
 
-/* Отключаем hover-эффект для заголовков групп */
 .left-sidebar .ant-menu-submenu-title:hover {
     background: transparent !important;
     color: var(--text-muted) !important;
 }
 
-/* Прячем стрелку раскрытия подменю */
 .left-sidebar .ant-menu-submenu-arrow {
     display: none !important;
 }
 
-/* =========================================
-   3. ПУНКТЫ МЕНЮ (menu-items)
-   ========================================= */
-
-/* Настройки самого пункта */
 .left-sidebar .ant-menu-item {
     position: relative;
     display: flex !important;
@@ -482,12 +477,10 @@ input:focus-visible {
     line-height: normal !important;
 }
 
-/* Убираем внутренний отступ между иконкой и текстом от Ant Design */
 .left-sidebar .ant-menu-item .ant-menu-title-content {
     margin-inline-start: 0 !important;
 }
 
-/* Настраиваем иконки */
 .left-sidebar .ant-menu-item-icon {
     display: inline-flex;
     width: 18px;
@@ -495,23 +488,16 @@ input:focus-visible {
     font-size: 18px !important;
 }
 
-/* =========================================
-   4. СОСТОЯНИЯ (Hover и Active)
-   ========================================= */
-
-/* Hover (наведение) для кликабельных пунктов */
 .left-sidebar .ant-menu-item:hover {
     background: var(--bg-hover) !important;
     color: var(--text-secondary) !important;
 }
 
-/* Активный (выбранный) пункт */
 .left-sidebar .ant-menu-item-selected {
     background: var(--bg-active) !important;
     color: var(--color-primary) !important;
 }
 
-/* Кастомная синяя полоска слева для активного пункта */
 .left-sidebar .ant-menu-item-selected::before {
     content: "";
     position: absolute;
@@ -521,7 +507,6 @@ input:focus-visible {
     background: var(--color-primary);
 }
 
-/* Отключаем стандартную синюю полоску Ant Design, которая рисуется справа */
 .left-sidebar .ant-menu-item::after {
     display: none !important;
 }
@@ -635,6 +620,162 @@ input:focus-visible {
 }
 
 /* =========================================================
+  MAIN
+   ========================================================= */
+.main {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    padding: 32px 32px 24px;
+    background: var(--bg-page);
+}
+
+/* =========================================================
+   КАТАЛОГ И КАРТОЧКИ ТЕМ (TopicCard)
+   ========================================================= */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.topic-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 192px;
+    padding: 0;
+    border: 1px solid var(--border);
+
+    border-top: 3px solid var(--topic-color, var(--color-basics));
+    border-radius: 8px;
+    background: var(--bg-card);
+    box-shadow: 0 2px 10px rgba(25, 74, 128, 0.02);
+    transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.topic-card:is(:hover, :focus-within) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(25, 74, 128, 0.09);
+}
+
+[data-theme="dark"] .topic-card {
+    box-shadow: none;
+}
+
+[data-theme="dark"] .topic-card:is(:hover, :focus-within) {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.topic-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    padding: 16px;
+}
+
+.topic-card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.topic-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: var(--topic-color-light, var(--color-basics-light));
+    color: var(--topic-ink, var(--color-basics-ink));
+    font-size: 20px;
+}
+
+.topic-category {
+    color: var(--topic-ink, var(--color-basics-ink));
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.topic-card-title {
+    margin: 12px 0 4px;
+    color: var(--text-main);
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.topic-card-description {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.topic-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 16px;
+    color: var(--topic-ink, var(--color-primary));
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.topic-link:hover {
+    text-decoration: none;
+}
+
+.topic-link-icon {
+    display: inline-flex;
+    font-size: 16px;
+}
+
+.topic-project {
+    --topic-color: var(--color-project);
+    --topic-ink: var(--color-project-ink);
+    --topic-color-light: var(--color-project-light);
+}
+.topic-basic {
+    --topic-color: var(--color-basics);
+    --topic-ink: var(--color-basics-ink);
+    --topic-color-light: var(--color-basics-light);
+}
+.topic-hooks {
+    --topic-color: var(--color-hooks);
+    --topic-ink: var(--color-hooks-ink);
+    --topic-color-light: var(--color-hooks-light);
+}
+.topic-advanced {
+    --topic-color: var(--color-advanced);
+    --topic-ink: var(--color-advanced-ink);
+    --topic-color-light: var(--color-advanced-light);
+}
+.topic-routing {
+    --topic-color: var(--color-routing);
+    --topic-ink: var(--color-routing-ink);
+    --topic-color-light: var(--color-routing-light);
+}
+.topic-forms {
+    --topic-color: var(--color-forms);
+    --topic-ink: var(--color-forms-ink);
+    --topic-color-light: var(--color-forms-light);
+}
+.topic-storage {
+    --topic-color: var(--color-storage);
+    --topic-ink: var(--color-storage-ink);
+    --topic-color-light: var(--color-storage-light);
+}
+
+
+/* =========================================================
   FOOTER
    ========================================================= */
 .footer {
@@ -669,13 +810,11 @@ input:focus-visible {
     transition: color var(--transition-theme) ease;
 }
 
-/* Жестко прописываем плавность для SVG внутри иконки, чтобы она не моргала */
 .github-icon,
 .github-icon svg {
     transition: color var(--transition-theme) ease;
 }
 
-/* Красим ссылку и иконку при наведении */
 .github-link:hover,
 .github-link:hover .github-icon {
     color: var(--color-primary);
