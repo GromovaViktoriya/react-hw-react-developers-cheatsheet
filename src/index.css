@@ -274,7 +274,8 @@ button:focus-visible, a:focus-visible, input:focus-visible {
     padding-inline: 24px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-shrink: 0;
     gap: 12px;
     border-bottom: 1px solid var(--border);
     border-top-right-radius: 16px;
@@ -290,6 +291,10 @@ button:focus-visible, a:focus-visible, input:focus-visible {
     display: flex;
     align-items: center;
     gap: 16px;
+    flex: 1;
+    min-width: 0;
+    justify-content: flex-start;
+    text-align: left;
 }
 
 .header-logo:hover {
@@ -301,6 +306,7 @@ button:focus-visible, a:focus-visible, input:focus-visible {
     height: 42px;
     flex: 0 0 auto;
     color: var(--color-react);
+    display: block;
 }
 
 .header-logo-title {
@@ -309,6 +315,10 @@ button:focus-visible, a:focus-visible, input:focus-visible {
     font-size: 18px;
     font-weight: 800;
     line-height: 1.25;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .header-actions {
@@ -316,6 +326,7 @@ button:focus-visible, a:focus-visible, input:focus-visible {
     align-items: center;
     gap: 8px;
     flex: 0 0 auto;
+    margin-left: auto;
 }
 
 .app .mobile-menu-button {
@@ -1449,10 +1460,18 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 
     .header-logo-title {
         font-size: 14px;
-        max-width: 140px;
     }
     .header-logo-icon {
-        display: none;
+        width: 26px;
+        height: 26px;
+    }
+    .header {
+        gap: 8px;
+        padding-inline: 12px;
+    }
+
+    .header-logo {
+        gap: 6px;
     }
 
     .warning {
@@ -1484,5 +1503,39 @@ button:focus-visible, a:focus-visible, input:focus-visible {
     }
     .github-link {
         position: static;
+    }
+}
+
+@media (max-width: 375px) {
+    .header {
+        padding-inline: 8px;
+        gap: 6px;
+    }
+
+    .header-logo {
+        gap: 4px;
+    }
+
+    .header-logo-icon {
+        display: block;
+        width: 22px;
+        height: 22px;
+    }
+
+    .header-logo-title {
+        font-size: 12px;
+        max-width: none;
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+    }
+
+    .theme-toggle .ant-segmented-item-label {
+        width: 28px;
+        min-height: 32px;
+    }
+
+    .theme-toggle .ant-segmented-item-icon {
+        font-size: 18px;
     }
 }

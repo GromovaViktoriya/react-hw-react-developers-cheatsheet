@@ -16,7 +16,7 @@ export const Home = () => {
 
     return (
         <>
-            <Content className='main'>
+            <Content className={`main${!showAll ? " main-collapsed" : ""}`}>
                 <IntroHomeText/>
                 <Search query={query} setQuery={setQuery}/>
                 <Catalog query={query} setQuery={setQuery} showAll={showAll} setShowAll={setShowAll}/>
