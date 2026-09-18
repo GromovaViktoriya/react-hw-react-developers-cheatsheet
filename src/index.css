@@ -274,13 +274,12 @@ input:focus-visible {
     color var(--transition-theme);
     border: 1px solid var(--border);
     border-radius: 16px;
-    overflow: hidden;
 }
 
 .app-content {
     display: flex;
     align-items: stretch;
-    min-height: calc(100vh - (var(--header-height) + var(--footer-height)));
+    min-height: calc(100vh - var(--header-height) - 2px);
 }
 
 /* =========================================================
@@ -296,9 +295,15 @@ input:focus-visible {
     gap: 12px;
 
     border-bottom: 1px solid var(--border);
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
     background: var(--bg-card);
     transition: background-color var(--transition-theme),
     border-color var(--transition-theme);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .header-logo {
@@ -358,6 +363,7 @@ input:focus-visible {
     color: var(--text-secondary) !important;
     background-color: rgba(0, 0, 0, 0.05) !important;
 }
+
 [data-theme="dark"] .theme-toggle .ant-segmented-item:hover:not(.ant-segmented-item-selected) {
     color: var(--text-main) !important;
     background-color: rgba(255, 255, 255, 0.12) !important;
@@ -369,6 +375,7 @@ input:focus-visible {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.05) !important;
     border-radius: 999px !important;
 }
+
 [data-theme="dark"] .theme-toggle .ant-segmented-thumb,
 [data-theme="dark"] .theme-toggle .ant-segmented-item-selected {
     background-color: var(--bg-hover) !important;
@@ -378,6 +385,7 @@ input:focus-visible {
 .theme-toggle .ant-segmented-thumb {
     transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
 }
+
 .theme-toggle .ant-segmented-item-selected {
     transition: none !important;
 }
@@ -385,6 +393,7 @@ input:focus-visible {
 .theme-toggle .ant-segmented-item-selected:hover {
     background-color: #F8FAFC !important;
 }
+
 [data-theme="dark"] .theme-toggle .ant-segmented-item-selected:hover {
     background-color: #253449 !important;
 }
@@ -393,6 +402,7 @@ input:focus-visible {
 .theme-toggle .ant-segmented-item-selected .ant-segmented-item-icon {
     color: var(--color-primary) !important;
 }
+
 .theme-toggle .ant-segmented-item-selected:hover .ant-segmented-item-icon {
     color: var(--color-primary-hover) !important;
 }
@@ -415,10 +425,15 @@ input:focus-visible {
 .left-sidebar {
     overflow-y: auto;
     overscroll-behavior: contain;
-    padding: 20px 10px;
     border-right: 1px solid var(--border);
     background: var(--bg-sidebar);
     scrollbar-width: thin;
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height) - 2px);
+    padding: 20px 10px calc(20px + var(--footer-height));
+
+    border-bottom-left-radius: 16px;
 }
 
 .left-sidebar .ant-menu {
@@ -519,10 +534,17 @@ input:focus-visible {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding: 20px;
+    padding: 20px 10px calc(20px + var(--footer-height));
     border-left: 1px solid var(--border);
     background: var(--bg-sidebar);
     scrollbar-width: thin;
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height) - 2px);
+    overflow-y: auto;
+    align-self: flex-start;
+
+    border-bottom-right-radius: 16px;
 }
 
 .right-sidebar-card {
@@ -584,30 +606,39 @@ input:focus-visible {
     font-size: 18px;
 }
 
+/* =========================================================
+   БЛОК МОТИВАЦИИ (Motivation)
+   ========================================================= */
+
 .motivation {
     display: flex;
     align-items: flex-start;
     gap: 12px;
     padding: 16px;
-    border: 1px solid var(--border-warning);
     border-radius: 8px;
-    background: var(--bg-warning);
     margin-top: 16px;
+
+    /* Лиловые (волшебные) оттенки для светлой темы */
+    background: #faf5ff;
+    border: 1px solid #e9d5ff;
 }
 
 .motivation-icon {
     display: inline-flex;
     flex-shrink: 0;
-    color: var(--color-warning);
-    font-size: 28px;
+
+    /* Обновленные габариты и цвет */
+    font-size: 18px;
+    margin-top: 2px;
+    color: #a855f7; /* Насыщенный лиловый акцент */
 }
 
 .motivation-text {
-     margin: 0;
-     color: var(--text-secondary);
-     font-size: 14px;
-     line-height: 1.65;
- }
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.65;
+}
 
 .motivation-text + .motivation-text {
     margin-top: 12px;
@@ -619,6 +650,17 @@ input:focus-visible {
     vertical-align: middle;
 }
 
+/* --- Dark Mode адаптация --- */
+[data-theme="dark"] .motivation {
+    /* Приглушенные лиловые тона для темной темы */
+    background: rgba(89, 66, 112, 0.1);
+    border-color: rgba(168, 85, 247, 0.2);
+}
+
+[data-theme="dark"] .motivation-icon {
+    color: #c084fc;
+}
+
 /* =========================================================
    НАВИГАЦИЯ ПО ТЕМЕ (TopicNavigation в RightSidebar)
    ========================================================= */
@@ -626,6 +668,7 @@ input:focus-visible {
 .topic-navigation-card{
     margin-bottom: 16px;
 }
+
 .topic-navigation-title {
     margin: 0 0 12px;
     color: var(--text-muted);
@@ -638,7 +681,6 @@ input:focus-visible {
 .topic-navigation-list {
     margin: 0;
     padding: 0;
-    border-left: 1px solid var(--border);
     list-style: none;
 }
 
@@ -681,8 +723,9 @@ input:focus-visible {
     flex-direction: column;
     min-width: 0;
     width: 100%;
-    padding: 32px 32px 24px;
+    padding: 32px 32px calc(24px + var(--footer-height));
     background: var(--bg-page);
+
 }
 
 /* --- Вступление (IntroHomeText) --- */
@@ -693,9 +736,11 @@ input:focus-visible {
     gap: 16px;
     margin-bottom: 20px;
 }
+
 .intro-text {
     min-width: 0;
 }
+
 .intro-label {
     margin: 0 0 8px;
     color: var(--text-muted);
@@ -703,6 +748,7 @@ input:focus-visible {
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
+
 .title-main {
     font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
@@ -712,22 +758,26 @@ input:focus-visible {
     line-height: 1.12;
     letter-spacing: -0.035em;
 }
+
 .title-main-accent {
     font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     display: block;
     color: var(--color-primary);
 }
+
 .intro-description {
     max-width: 560px;
     margin: 12px 0 0;
     color: var(--text-secondary);
     font-size: 16px;
 }
+
 .intro-image {
     display: grid;
     place-items: center;
     min-width: 0;
 }
+
 .intro-image :is(img, svg) {
     display: block;
     width: 100%;
@@ -839,7 +889,6 @@ input:focus-visible {
     line-height: 1.2;
 }
 
-
 .catalog-link {
     display: inline-flex;
     align-items: center;
@@ -854,18 +903,15 @@ input:focus-visible {
     transition: color var(--transition-fast);
 }
 
-
 .catalog-link-icon-right,
 .catalog-link-icon-left {
     font-size: 14px;
     transition: transform var(--transition-fast);
 }
 
-
 .catalog-link:hover .catalog-link-icon-right {
     transform: translateX(4px);
 }
-
 
 .catalog-link:hover .catalog-link-icon-left {
     transform: translateX(-4px);
@@ -1013,7 +1059,7 @@ input:focus-visible {
 .topic-page {
     width: 100%;
     min-width: 0;
-    padding: 32px 32px 24px;
+    padding: 32px 32px calc(24px + var(--footer-height));
 }
 
 .topic-header {
@@ -1222,6 +1268,42 @@ input:focus-visible {
 }
 
 /* =========================================================
+   БЛОК СОВЕТОВ (Advice)
+   ========================================================= */
+
+.right-sidebar-card.advice {
+    /* Легкий зеленый фон для светлой темы */
+    background-color: #f0fdf4;
+    /* Зеленая граница */
+    border-color: #bbf7d0;
+}
+
+/* Цвет текста в блоке советов */
+.right-sidebar-card.advice .right-sidebar-list-item {
+    color: #166534;
+}
+
+/* Цвет иконок в блоке советов */
+.right-sidebar-card.advice .right-sidebar-list-icon {
+    color: #22c55e;
+}
+
+/* --- Dark Mode адаптация --- */
+[data-theme="dark"] .right-sidebar-card.advice {
+    /* Темно-зеленый фон для темной темы */
+    background-color: rgba(27, 48, 39, 0.3);
+    border-color: rgba(52, 211, 153, 0.2);
+}
+
+[data-theme="dark"] .right-sidebar-card.advice .right-sidebar-list-item {
+    color: #a7f3d0;
+}
+
+[data-theme="dark"] .right-sidebar-card.advice .right-sidebar-list-icon {
+    color: #10b981;
+}
+
+/* =========================================================
    ДОКУМЕНТАЦИЯ (DocumentationLink)
    ========================================================= */
 
@@ -1261,14 +1343,20 @@ input:focus-visible {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-
     background: var(--bg-card);
-    padding: 16px 24px;
+
+    height: var(--footer-height);
+    padding: 0 24px;
     box-sizing: border-box;
     border-top: 1px solid var(--border);
     transition: background-color var(--transition-theme),
     border-color var(--transition-theme);
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+
+    position: relative;
+    z-index: 10;
+    margin-top: calc(-1 * var(--footer-height));
 }
 
 .footer-text {
