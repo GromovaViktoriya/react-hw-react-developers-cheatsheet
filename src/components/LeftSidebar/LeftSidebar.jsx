@@ -7,7 +7,7 @@ import {useLocation, useNavigate} from "react-router";
 const {Sider} = Layout;
 
 
-export const LeftSidebar = () => {
+export const LeftSidebar = ({ inDrawer = false }) => {
     const {theme} = useContext(ThemeContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -18,7 +18,7 @@ export const LeftSidebar = () => {
         navigate(`/topics/${key}`);
     }
     return (
-        <Sider className='left-sidebar' width={240}>
+        <Sider className={inDrawer ? 'drawer-sidebar' : 'left-sidebar'} width={inDrawer ? '100%' : 240}>
             <Menu
                 mode="inline"
                 items={menuItems}

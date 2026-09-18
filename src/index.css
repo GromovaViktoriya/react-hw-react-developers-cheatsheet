@@ -262,7 +262,6 @@ button:focus-visible, a:focus-visible, input:focus-visible {
     display: flex;
     flex-direction: column;
     min-width: 0;
-    width: 100%;
     padding: 32px 32px calc(24px + var(--footer-height));
     background: var(--bg-page);
 }
@@ -319,6 +318,19 @@ button:focus-visible, a:focus-visible, input:focus-visible {
     flex: 0 0 auto;
 }
 
+.app .mobile-menu-button {
+    display: none;
+}
+
+.drawer-sidebar {
+    background: transparent !important;
+}
+
+.drawer-sidebar .ant-menu {
+    border-inline-end: none !important;
+    background: transparent !important;
+}
+
 /* =========================================================
    THEME TOGGLE (ANTD OVERRIDES)
    ========================================================= */
@@ -364,8 +376,14 @@ button:focus-visible, a:focus-visible, input:focus-visible {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 2px rgba(0, 0, 0, 0.2) !important;
 }
 
-.theme-toggle .ant-segmented-thumb {
-    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+.theme-toggle .ant-segmented-item:has(input:checked),
+.theme-toggle .ant-segmented-item:has(input:checked) .ant-segmented-item-icon {
+    color: var(--color-primary) !important;
+}
+
+.theme-toggle .ant-segmented-item:has(input:checked):hover,
+.theme-toggle .ant-segmented-item:has(input:checked):hover .ant-segmented-item-icon {
+    color: var(--color-primary-hover) !important;
 }
 
 .theme-toggle .ant-segmented-item-selected {
@@ -499,6 +517,18 @@ button:focus-visible, a:focus-visible, input:focus-visible {
     width: 3px;
     border-radius: 999px;
     background: var(--color-primary);
+}
+
+
+.drawer-sidebar {
+    background: transparent !important;
+    height: 100% !important;
+    padding: 20px 10px !important;
+}
+
+.drawer-sidebar .ant-menu {
+    border-inline-end: none !important;
+    background: transparent !important;
 }
 
 /* =========================================================
@@ -951,7 +981,8 @@ button:focus-visible, a:focus-visible, input:focus-visible {
    TOPIC PAGE & CONTENT
    ========================================================= */
 .topic-page {
-    width: 100%;
+    flex: 1 1 0;
+    width: auto;
     min-width: 0;
     padding: 32px 32px calc(24px + var(--footer-height));
 }
@@ -1259,34 +1290,199 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 }
 
 /* =========================================================
-   MEDIA QUERIES
+   MEDIA QUERIES (АДАПТИВНОСТЬ)
    ========================================================= */
+
 @media (max-width: 1439px) {
-    .intro {
-        grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    .catalog-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .main {
+        padding-inline: 24px;
     }
     .title-main {
         font-size: 38px;
     }
+    .intro {
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    }
+}
+
+@media (max-width: 1199px) {
+    .app-content {
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+
+    .right-sidebar {
+        position: static !important;
+        height: auto !important;
+        border-left: none;
+        border-top: 1px solid var(--border);
+        padding: 24px !important;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-bottom-right-radius: 0;
+        gap: 16px !important;
+        overflow: visible !important;
+
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+
+    .right-sidebar > div,
+    .right-sidebar > .motivation {
+        flex: 1 1 300px;
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 1023px) {
-    .intro {
-        grid-template-columns: 1fr;
+    .catalog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .intro {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+    }
+
     .intro-image {
-        display: none;
+        display: grid;
+        place-items: start;
+        width: 100%;
+    }
+
+    .intro-image :is(img, svg) {
+        width: 100%;
+        max-width: 360px;
+        height: auto;
+    }
+}
+
+@media (max-width: 899px) {
+    .left-sidebar {
+        display: none !important;
+    }
+
+    .mobile-menu-button {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .header {
+        padding-inline: 16px;
+    }
+    .header-logo {
+        gap: 8px;
+    }
+    .header-logo-title {
+        font-size: 16px;
+    }
+    .header-logo-icon {
+        width: 36px;
+        height: 36px;
     }
 }
 
 @media (max-width: 599px) {
-    .title-main {
+    .main {
+        padding: 24px 16px 24px;
+    }
+    .right-sidebar {
+        padding: 16px !important;
+        flex-direction: column;
+    }
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .right-sidebar > div,
+    .right-sidebar > .motivation {
+        flex: none;
+        width: 100%;
+    }
+
+    .title-main,
+    .title-page {
         font-size: 32px;
     }
-    .intro-description {
+    .intro-description,
+    .topic-subtitle,
+    .topic-text,
+    .topic-section ul {
+        font-size: 15px;
+    }
+
+    .topic-page {
+        padding: 24px 16px 24px;
+    }
+
+    .intro {
+        gap: 16px;
+    }
+
+    .intro-image :is(img, svg) {
+        max-width: 280px;
+    }
+
+    .intro-image {
+        place-items: center;
+    }
+
+    .topic-title-row {
+        gap: 12px;
+    }
+    .topic-title-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+        border-radius: 12px;
+    }
+    .topic-eyebrow {
+        font-size: 12px;
+    }
+
+    .header-logo-title {
+        font-size: 14px;
+        max-width: 140px;
+    }
+    .header-logo-icon {
+        display: none;
+    }
+
+    .warning {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+    }
+    .warning-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+
+    .code-content {
+        font-size: 12px;
+        padding: 12px;
+    }
+    .docs-link {
         font-size: 14px;
     }
-    .home-search {
-        margin-bottom: 24px;
+
+    .footer {
+        flex-direction: column;
+        height: auto;
+        padding: 16px;
+        gap: 12px;
+        text-align: center;
+        margin-top: 0;
+    }
+    .github-link {
+        position: static;
     }
 }
