@@ -5,13 +5,16 @@ import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 import javascript from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
 import markup from 'react-syntax-highlighter/dist/esm/languages/prism/markup';
 import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
+import {useContext} from "react";
+import ThemeContext from "../../../contexts/ThemeContext/ThemeContext.js";
 
 PrismLight.registerLanguage('jsx', jsx);
 PrismLight.registerLanguage('javascript', javascript);
 PrismLight.registerLanguage('html', markup);
 PrismLight.registerLanguage('bash', bash);
 
-export const CodeBlock = ({code, language, isDark})=>{
+export const CodeBlock = ({code, language}) => {
+    const {theme} = useContext(ThemeContext);
     return (
         <div className="code-content">
             <div className="code-header">
@@ -21,14 +24,12 @@ export const CodeBlock = ({code, language, isDark})=>{
                         text: code,
                         tooltips: ['Скопировать', 'Скопировано'],
                     }}
-                >
-                    Копировать
-                </Typography.Text>
+                />
             </div>
             <PrismLight
                 className='code-block'
                 language={language}
-                style={isDark ? oneDark : oneLight}
+                style={theme === 'dark' ? oneDark : oneLight}
                 showLineNumbers={false}
                 customStyle={{
                     margin: 0,
@@ -40,7 +41,7 @@ export const CodeBlock = ({code, language, isDark})=>{
                 }}
             >
                 {code}
-            </PrismLight >
+            </PrismLight>
         </div>
     )
 }
