@@ -11,9 +11,9 @@ export const Pitfalls = ({topic}) => {
                     Подводные камни
                 </h2>
                 <ul className="warning-list">
-                    {topic.pitfalls.map((pitfall) => {
+                    {topic.pitfalls.map((pitfall, i) => {
                         return (
-                            <li >
+                            <li key={i}>
                                 {pitfall}
                             </li>
                         )

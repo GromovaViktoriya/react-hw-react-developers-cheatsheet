@@ -1,9 +1,9 @@
-import {BulbOutlined, HeartFilled} from "@ant-design/icons";
+import {HeartFilled, RocketOutlined} from "@ant-design/icons";
 
 export const Motivation = ({isTopic, topic}) => {
     return (
         <div className="motivation">
-            <BulbOutlined className="motivation-icon" aria-hidden="true"/>
+            <RocketOutlined className="motivation-icon" aria-hidden="true"/>
             <div>
                 <p className="motivation-text">
                     {isTopic
