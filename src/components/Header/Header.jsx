@@ -44,7 +44,7 @@ export const Header = () => {
                 placement="left"
                 onClose={onClose}
                 open={open}
-                width={280}
+                size={280}
                 className="cheatsheet-drawer"
                 classNames={{body: 'cheatsheet-drawer-body'}}
                 closeIcon={<span style={{color: theme === 'dark' ? '#f2f6ff' : '#182B49'}}>X</span>}

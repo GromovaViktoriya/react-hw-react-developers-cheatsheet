@@ -23,7 +23,7 @@ export const Topic = () => {
 
                 {topic.sections.map(section => {
                     return (
-                        <TopicSection section={section}/>
+                        <TopicSection section={section} key={section.id}/>
                     );
                 })}
 
