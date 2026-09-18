@@ -1,14 +1,12 @@
-import {BookOutlined, CodeOutlined, ExportOutlined, InfoCircleOutlined, WarningOutlined} from "@ant-design/icons";
 import {Motivation} from "./Motivation/Motivation.jsx";
-import topics from "../../data/data.jsx";
 import {InfoList} from "./InfoList/InfoList.jsx";
 import {IntroText} from "./IntroText/IntroText.jsx";
-import {TopicNavigation} from "../TopicNavigation/TopicNavigation.jsx";
+import {TopicNavigation} from "../../pages/Topic/TopicNavigation/TopicNavigation.jsx";
 import {Layout} from "antd";
 
 const {Sider} = Layout;
 
-export const RightSidebar = ({isTopic, topic}) => {
+export const RightSidebar = ({isTopic, topic, items}) => {
     return (
         <Sider className='right-sidebar' width={276}>
             <div className="right-sidebar-card">
@@ -16,16 +14,10 @@ export const RightSidebar = ({isTopic, topic}) => {
                     ? <TopicNavigation topic={topic} />
                     : <IntroText/>}
                 <InfoList
-                    items={[
-                        [BookOutlined, `${topics.length} тем`],
-                        [InfoCircleOutlined, "Краткие объяснения"],
-                        [CodeOutlined, "Примеры кода"],
-                        [WarningOutlined, "Подводные камни"],
-                        [ExportOutlined, "Ссылки на документацию"],
-                    ]}
+                    items={items}
                 />
             </div>
-            <Motivation isTopic={isTopic}/>
+            <Motivation isTopic={isTopic} topic={topic} />
         </Sider>
     )
 }

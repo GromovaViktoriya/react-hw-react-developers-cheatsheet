@@ -11,7 +11,7 @@ export const TopicCard = ({ topic }) => {
     const icon = groupData?.children?.find(child => child.key === topic.id)?.icon;
 
     const HandleClick = () => {
-        navigate(`?topic=${topic.id}`);
+        navigate(`/topics/${topic.id}`);
     }
 
     return (
@@ -29,7 +29,7 @@ export const TopicCard = ({ topic }) => {
             <p className="topic-card-description">{topic.description}</p>
             <Link
                 className="topic-link"
-                to={`?topic=${topic.id}`}
+                to={`/topics/${topic.id}`}
                 aria-label={`Подробнее: ${topic.title}`}
                 onClick={HandleClick}
             >

@@ -1,4 +1,4 @@
-import {ReactArt} from "../../../assets/svg/ReactArt.jsx";
+import {ReactArt} from "../../../pages/Home/ReactArt/ReactArt.jsx";
 
 export const IntroText = () => {
     return (
